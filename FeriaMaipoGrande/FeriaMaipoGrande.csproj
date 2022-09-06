@@ -94,5 +94,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FeriaMaipoGrande.Negocio\FeriaMaipoGrande.Negocio.csproj">
+      <Project>{3167c5c3-45b4-4f49-a908-a5aaa80e528b}</Project>
+      <Name>FeriaMaipoGrande.Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
