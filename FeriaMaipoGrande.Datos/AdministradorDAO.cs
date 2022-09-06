@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FeriaMaipoGrande.Negocio
+namespace FeriaMaipoGrande.Datos
 {
     public class admnistrador : Persona
     {
@@ -26,3 +26,4 @@ namespace FeriaMaipoGrande.Negocio
         public int IdAdmnistrador { get => idAdmnistrador; set => idAdmnistrador = value; }
     }
 }
+

@@ -6,18 +6,4 @@ using System.Threading.Tasks;
 
 namespace FeriaMaipoGrande.Negocio
 {
-    class Usuario : Persona
-    {
-        private int userID;
-        private string password, rol, email;
-
-        public Usuario()
-        {
-
-        }
-
-
-
-
-    }
-}
+    

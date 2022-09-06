@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FeriaMaipoGrande.Negocio
+namespace FeriaMaipoGrande.Datos
 {
     public class Productor : Persona
     {
