@@ -19,7 +19,7 @@ namespace FeriaMaipoGrande.Negocio
             this.Calidad = calidad;
             this.Observaciones = observaciones;
         }
-        // Comentario de prueba  
+        // Comentario de prueba 2
         public int IdProducto { get => idProducto; set => idProducto = value; }
         public int Precio { get => precio; set => precio = value; }
         public string Nombre { get => nombre; set => nombre = value; }
