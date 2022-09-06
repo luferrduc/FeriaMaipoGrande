@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace FeriaMaipoGrande.Negocio
 {
-    class Productor
+    public class Productor : Persona
     {
+
+        private int idProductor;
+
+        public Productor()
+        {
+        }
+
+        public Productor(int idProductor)
+        {
+            this.IdProductor = idProductor;
+        }
+
+        public int IdProductor { get => idProductor; set => idProductor = value; }
     }
 }

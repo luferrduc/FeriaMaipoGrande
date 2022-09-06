@@ -8,6 +8,17 @@ namespace FeriaMaipoGrande.Negocio
 {
     public class admnistrador : Persona
     {
-        private int id admnistrador;
+        private int idAdmnistrador;
+
+        public admnistrador()
+        {
+        }
+
+        public admnistrador(int idAdmnistrador)
+        {
+            this.IdAdmnistrador = idAdmnistrador;
+        }
+
+        public int IdAdmnistrador { get => idAdmnistrador; set => idAdmnistrador = value; }
     }
 }
