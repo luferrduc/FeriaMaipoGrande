@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FeriaMaipoGrande.Negocio;
 
+
+
 namespace FeriaMaipoGrande
 {
     /// <summary>
@@ -25,8 +27,5 @@ namespace FeriaMaipoGrande
         {
             InitializeComponent();
         }
-
-
-
     }
 }
