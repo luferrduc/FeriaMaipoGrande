@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace FeriaMaipoGrande.Negocio
 {
-    class Persona
+    public class Persona
     {
         private int idPersona;
-        private String nombre, apellidoPaterno, apellidoMaterno, direccion, ciudad, pais;
+        private string nombre, apellidoPaterno, apellidoMaterno, direccion, ciudad, pais, numIdentificador;
 
         //Constructor vacío
         public Persona()
@@ -17,15 +17,16 @@ namespace FeriaMaipoGrande.Negocio
         }
 
         //Constructor con datos
-        public Persona(int idPersona, string nombre, string apellidoPaterno, string apellidoMaterno, string direccion, string ciudad, string pais)
+        public Persona(int idPersona, string nombre, string apellidoPaterno, string apellidoMaterno, string direccion, string ciudad, string pais, string numIdentificador)
         {
             this.IdPersona = idPersona;
             this.Nombre = nombre;
-            this.apellidoPaterno = apellidoPaterno;
-            this.apellidoMaterno = apellidoMaterno;
-            this.direccion = direccion;
-            this.ciudad = ciudad;
-            this.pais = pais;
+            this.ApellidoPaterno = apellidoPaterno;
+            this.ApellidoMaterno = apellidoMaterno;
+            this.Direccion = direccion;
+            this.Ciudad = ciudad;
+            this.Pais = pais;
+            this.NumIdentificador = numIdentificador;
         }
 
         //Getters y setters
@@ -36,5 +37,6 @@ namespace FeriaMaipoGrande.Negocio
         public string Direccion { get => direccion; set => direccion = value; }
         public string Ciudad { get => ciudad; set => ciudad = value; }
         public string Pais { get => pais; set => pais = value; }
+        public string NumIdentificador { get => numIdentificador; set => numIdentificador = value; }
     }
 }
