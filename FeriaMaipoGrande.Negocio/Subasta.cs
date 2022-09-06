@@ -16,5 +16,9 @@ namespace FeriaMaipoGrande.Negocio
         private int Precio { get; set; }
         private String Estado { get; set; }
 
+        public String InformarGanador(String Ganador)
+        {
+            return "El ganador es " + Ganador;
+        }
     }
 }
