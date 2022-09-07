@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FeriaMaipoGrande.Datos
 {
-    public class Productor : Persona
+    public class Productor : PersonaDAO
     {
 
         private int idProductor;

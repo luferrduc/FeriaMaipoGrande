@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FeriaMaipoGrande.Datos;
+
 
 namespace FeriaMaipoGrande
 {
@@ -23,6 +25,9 @@ namespace FeriaMaipoGrande
         public MainWindow()
         {
             InitializeComponent();
+            Datos.ApiRest.DBApi kd = new Datos.ApiRest.DBApi();
+            dynamic datos = kd.Get();
+            MessageBox.Show(Convert.ToString(datos));
         }
     }
 }

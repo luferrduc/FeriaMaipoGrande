@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace FeriaMaipoGrande.Datos
 {
-    public class Persona
+    public class PersonaDAO
     {
-        private int idPersona; 
+        private int idPersona;
         private string nombre, apellidoPaterno, apellidoMaterno, direccion, ciudad, pais, numIdentificador;
 
-        //Constructor vacío 
-        public Persona()
+        //Constructor vacío
+        public PersonaDAO()
         {
         }
 
         //Constructor con datos
-        public Persona(int idPersona, string nombre, string apellidoPaterno, string apellidoMaterno, string direccion, string ciudad, string pais, string numIdentificador)
+        public PersonaDAO(int idPersona, string nombre, string apellidoPaterno, string apellidoMaterno, string direccion, string ciudad, string pais, string numIdentificador)
         {
             this.IdPersona = idPersona;
             this.Nombre = nombre;
