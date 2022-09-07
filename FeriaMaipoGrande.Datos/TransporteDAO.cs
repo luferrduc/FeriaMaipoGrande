@@ -4,28 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FeriaMaipoGrande.Negocio
+namespace FeriaMaipoGrande.Datos
 {
-    public class Transporte
+    public class TransporteDAO
     {
         private int idTransporte, capacidadCarga;
         private string patente, tamano, regrigeracion;
 
-        public Transporte(int idTransporte, int capacidadCarga, string patente, string tamano, string regrigeracion)
+        public TransporteDAO(int idTransporte, int capacidadCarga, string patente, string tamano, string regrigeracion)
         {
-            IdTransporte = idTransporte;
-            CapacidadCarga = capacidadCarga;
-            Patente = patente;
-            Tamano = tamano;
-            Regrigeracion = regrigeracion;
-        }
-
-        public Transporte(int capacidadCarga, string patente, string tamano, string regrigeracion)
-        {
-            CapacidadCarga = capacidadCarga;
-            Patente = patente;
-            Tamano = tamano;
-            Regrigeracion = regrigeracion;
+            this.IdTransporte = idTransporte;
+            this.CapacidadCarga = capacidadCarga;
+            this.Patente = patente;
+            this.Tamano = tamano;
+            this.Regrigeracion = regrigeracion;
         }
 
         public int IdTransporte { get => idTransporte; set => idTransporte = value; }
