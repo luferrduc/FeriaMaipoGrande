@@ -8,24 +8,40 @@ namespace FeriaMaipoGrande.Negocio
 {
     class Subasta
     {
-        private int _idSubasta;
-        private String _ganador;
-        private DateTime _fechaIni; 
-        private DateTime _fechaTer;
-        private String _cargo;
-        private int  _precio; 
-        private String  _estado;
+        private int idSubasta, precio;
+        private string ganador, cargo, estado;
+        private DateTime fechaIni, fechaTer; 
 
 
-        public int IdSubasta { get => _idSubasta;}
-        public String Ganador { get => _ganador; set => _ganador = value; }
-        public DateTime FechaIni { get => _fechaIni; set => _fechaIni = value; }
-        public DateTime FechaTer { get => _fechaTer; set => _fechaTer = value; }
-        public String Cargo { get => _cargo; set => _cargo = value; }
-        public int Precio { get => _precio;  set => _precio = value; }
-        public int Estado { get => _estado;  set =>  _estado = value; }
+        //Constructor vacio
+        public Subasta()
+        {
+
+        }
+
+        //Constructor con datos
+        public Subasta(int idSubasta, int precio, string ganador, string cargo, string estado, DateTime fechaIni, DateTime fechaTer)
+        {
+            this.IdSubasta = idSubasta;
+            this.Precio = precio;
+            this.Ganador = ganador;
+            this.Cargo = cargo;
+            this.Estado = estado;
+            this.FechaIni = fechaIni;
+            this.FechaTer = fechaTer;
+
+        }
+
+        //getters y setters
+        public int IdSubasta { get => idSubasta;}
+        public int Precio { get => precio;  set => precio = value; }
+        public string Ganador { get => ganador; set => ganador = value; }
+        public string Cargo { get => cargo; set => cargo = value; }
+        public string Estado { get => estado;  set =>  estado = value; }
+        public DateTime FechaIni { get => fechaIni; set => fechaIni = value; }
+        public DateTime FechaTer { get => fechaTer; set => fechaTer = value; }
          
-        public String InformarGanador(String Ganador)
+        public string InformarGanador(string Ganador)
         {
             return "El ganador es " + Ganador;
         }
