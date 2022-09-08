@@ -1,4 +1,6 @@
 ﻿using FeriaMaipoGrande.Negocio;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,5 +54,13 @@ namespace FeriaMaipoGrande
 
         }
 
+        private void btnEliminar_Click(object sender, RoutedEventArgs e)
+        {
+            dynamic persona = JObject.Parse(dgListaPersonas.SelectedItem.ToString());
+            string numID = persona["num_identificador"].ToString();
+            Persona pers = new Persona();
+            pers.eliminarPersona(numID);
+            listarPersonas();
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -27,5 +28,21 @@ namespace FeriaMaipoGrande.Datos
             dynamic data = JsonConvert.DeserializeObject(Datos);
             return data;
         }
+
+       public async Task<HttpStatusCode> DeletePersonaAsync(string numIdentificador)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.DeleteAsync(String.Concat("http://localhost:3001/api/persona/", numIdentificador));
+            return response.StatusCode;
+        }
+        /*
+        public async Task<Uri> CreateUserAsync(string url, Usuario usuario)
+        {
+            HttpClient client = new HttpClient();
+            var response = await client.PostAsJsonAsync(url, usuario);
+            response.EnsureSuccessStatusCode();
+            // return URI of the created resource.
+            return response.Headers.Location;
+        }*/
     }
 }

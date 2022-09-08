@@ -48,5 +48,10 @@ namespace FeriaMaipoGrande.Datos
 
             return datos;
         }
+
+        public async void eliminarPersonaDAO(string numIdentificador)
+        {
+            await dbapi.DeletePersonaAsync(numIdentificador);
+        }
     }
 }

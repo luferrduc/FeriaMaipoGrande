@@ -47,5 +47,11 @@ namespace FeriaMaipoGrande.Negocio
             dynamic listaPersonas = personaDAO.listarPersonasDAO();
             return listaPersonas;
         }
+
+        public void eliminarPersona(string numIdentificador)
+        {
+            PersonaDAO personaDAO = new PersonaDAO();
+            personaDAO.eliminarPersonaDAO(numIdentificador);
+        }
     }
 }
