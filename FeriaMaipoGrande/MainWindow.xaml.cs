@@ -20,14 +20,21 @@ namespace FeriaMaipoGrande
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow: Window
     {
         public MainWindow()
         {
             InitializeComponent();
-            Datos.ApiRest.DBApi kd = new Datos.ApiRest.DBApi();
-            dynamic datos = kd.Get();
-            MessageBox.Show(Convert.ToString(datos));
+            //Datos.ApiRest.DBApi kd = new Datos.ApiRest.DBApi();
+            //dynamic datos = kd.Get();
+            //MessageBox.Show(Convert.ToString(datos));
+        }
+
+        private void btnPersonas_Click(object sender, RoutedEventArgs e)
+        {
+            GestionPersonas gestionP = new GestionPersonas();
+            gestionP.Show();
+            Close();
         }
     }
 }

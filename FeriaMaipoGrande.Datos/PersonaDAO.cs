@@ -5,9 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FeriaMaipoGrande.Datos
-{
+{ 
+
     public class PersonaDAO
     {
+        DBApi dbapi = new DBApi();
         private int idPersona;
         private string nombre, apellidoPaterno, apellidoMaterno, direccion, ciudad, pais, numIdentificador;
 
@@ -19,14 +21,14 @@ namespace FeriaMaipoGrande.Datos
         //Constructor con datos
         public PersonaDAO(int idPersona, string nombre, string apellidoPaterno, string apellidoMaterno, string direccion, string ciudad, string pais, string numIdentificador)
         {
-            this.IdPersona = idPersona;
-            this.Nombre = nombre;
-            this.ApellidoPaterno = apellidoPaterno;
-            this.ApellidoMaterno = apellidoMaterno;
-            this.Direccion = direccion;
-            this.Ciudad = ciudad;
-            this.Pais = pais;
-            this.NumIdentificador = numIdentificador;
+            IdPersona = idPersona;
+            Nombre = nombre;
+            ApellidoPaterno = apellidoPaterno;
+            ApellidoMaterno = apellidoMaterno;
+            Direccion = direccion;
+            Ciudad = ciudad;
+            Pais = pais;
+            NumIdentificador = numIdentificador;
         }
 
         //Getters y setters
@@ -38,5 +40,13 @@ namespace FeriaMaipoGrande.Datos
         public string Ciudad { get => ciudad; set => ciudad = value; }
         public string Pais { get => pais; set => pais = value; }
         public string NumIdentificador { get => numIdentificador; set => numIdentificador = value; }
+
+
+        public dynamic listarPersonasDAO()
+        {
+            dynamic datos = dbapi.Get();
+
+            return datos;
+        }
     }
 }

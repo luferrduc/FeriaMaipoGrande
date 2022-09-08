@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace FeriaMaipoGrande.Datos.ApiRest
+namespace FeriaMaipoGrande.Datos
 {
     public class DBApi
     {
-        public dynamic Get()
+       public dynamic Get()
         {
-            HttpWebRequest myWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:3001/usuarios/Dextering98");
+            HttpWebRequest myWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:3001/api/persona");
             myWebRequest.UserAgent = " Mozilla / 5.0 ( Windows NT 6.1 ; WOW64 ; rv : 23.0 ) Gecko / 20100101 Firefox / 23.0 ";
             //myWebRequest.CookieContainer = myCookie ;
             myWebRequest.Credentials = CredentialCache.DefaultCredentials;
