@@ -76,6 +76,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProductoDAO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TransporteDAO.cs" />
     <Compile Include="AdministradorDAO.cs" />
     <Compile Include="DBApi.cs" />
     <Compile Include="PersonaDAO.cs" />

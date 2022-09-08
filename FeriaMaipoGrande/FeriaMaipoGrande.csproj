@@ -89,10 +89,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AgregarProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AgregarProducto.xaml.cs">
+      <DependentUpon>AgregarProducto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -133,6 +140,10 @@
     <ProjectReference Include="..\FeriaMaipoGrande.Datos\FeriaMaipoGrande.Datos.csproj">
       <Project>{2e8cb64b-6ef0-43f3-847d-be60ddcecdf6}</Project>
       <Name>FeriaMaipoGrande.Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FeriaMaipoGrande.Negocio\FeriaMaipoGrande.Negocio.csproj">
+      <Project>{3167c5c3-45b4-4f49-a908-a5aaa80e528b}</Project>
+      <Name>FeriaMaipoGrande.Negocio</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
