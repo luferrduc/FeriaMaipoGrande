@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FeriaMaipoGrande.Datos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +20,14 @@ namespace FeriaMaipoGrande.Negocio
         //Constructor con datos
         public Persona(int idPersona, string nombre, string apellidoPaterno, string apellidoMaterno, string direccion, string ciudad, string pais, string numIdentificador)
         {
-            this.IdPersona = idPersona;
-            this.Nombre = nombre;
-            this.ApellidoPaterno = apellidoPaterno;
-            this.ApellidoMaterno = apellidoMaterno;
-            this.Direccion = direccion;
-            this.Ciudad = ciudad;
-            this.Pais = pais;
-            this.NumIdentificador = numIdentificador;
+            IdPersona = idPersona;
+            Nombre = nombre;
+            ApellidoPaterno = apellidoPaterno;
+            ApellidoMaterno = apellidoMaterno;
+            Direccion = direccion;
+            Ciudad = ciudad;
+            Pais = pais;
+            NumIdentificador = numIdentificador;
         }
 
         //Getters y setters
@@ -38,5 +39,13 @@ namespace FeriaMaipoGrande.Negocio
         public string Ciudad { get => ciudad; set => ciudad = value; }
         public string Pais { get => pais; set => pais = value; }
         public string NumIdentificador { get => numIdentificador; set => numIdentificador = value; }
+
+
+        public dynamic listarPersonas()
+        {
+            PersonaDAO personaDAO = new PersonaDAO();
+            dynamic listaPersonas = personaDAO.listarPersonasDAO();
+            return listaPersonas;
+        }
     }
 }

@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FeriaMaipoGrande"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-
-
-    <Grid/>
+        Title="Menú Principal" Height="450" Width="800">
+    <Grid>
+        <Image HorizontalAlignment="Left" Height="55" Margin="682,10,0,0" VerticalAlignment="Top" Width="53"/>
+        <Button x:Name="btnPersonas" Content="Gestionar Personas" HorizontalAlignment="Left" Margin="198,120,0,0" VerticalAlignment="Top" Width="138" Height="88" Click="btnPersonas_Click"/>
+        <Button x:Name="btnUsuarios" Content="Gestionar Usuarios" HorizontalAlignment="Left" Margin="419,120,0,0" VerticalAlignment="Top" Width="138" Height="88"/>
+    </Grid>
 
 </Window>

@@ -59,7 +59,7 @@ namespace FeriaMaipoGrande.Negocio
                 }
                 catch (Exception ex)
                 {                   
-                    MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK);
+                    //MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK);
                     return false;
                 }
             }
