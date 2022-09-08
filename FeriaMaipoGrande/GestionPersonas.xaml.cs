@@ -40,15 +40,15 @@ namespace FeriaMaipoGrande
             Persona persona = new Persona();
             dynamic listaPersonas = persona.listarPersonas();
 
-            dgListaPersonas.Columns[0].Header = "ID";
+            /*dgListaPersonas.Columns[0].Header = "ID";
             dgListaPersonas.Columns[0].Header = "Nombre";
             dgListaPersonas.Columns[2].Header = "Apellido P";
             dgListaPersonas.Columns[3].Header = "Apellido M";
             dgListaPersonas.Columns[4].Header = "Dirección";
             dgListaPersonas.Columns[5].Header = "País";
             dgListaPersonas.Columns[6].Header = "Ciudad";
-            dgListaPersonas.Columns[7].Header = "Num ID";
-            //dgListaPersonas.ItemsSource = listaPersonas;
+            dgListaPersonas.Columns[7].Header = "Num ID";*/
+            dgListaPersonas.ItemsSource = listaPersonas;
 
         }
 
