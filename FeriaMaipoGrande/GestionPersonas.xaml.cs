@@ -58,37 +58,55 @@ namespace FeriaMaipoGrande
 
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
-            string id, nombre, apellidoP, apellidoM, direccion, ciudad, pais;
-            id = txtID.Text;
-            nombre = txtNombre.Text;
-            apellidoP = txtApellidoP.Text;
-            apellidoM = txtApellidoM.Text;
-            direccion = txtDireccion.Text;
-            ciudad = txtCiudad.Text;
-            pais = txtPais.Text;
-            Persona persona = new Persona();
-            persona.NumIdentificador = id;
-            persona.Nombre = nombre;
-            persona.ApellidoPaterno = apellidoP;
-            persona.ApellidoMaterno = apellidoM;
-            persona.Ciudad = ciudad;
-            persona.Pais = pais;
-            persona.Direccion = direccion;
-            JsonConvert.SerializeObject(persona);
-            persona.crearPersona();
+            if (dgListaPersonas.SelectedIndex == -1){
+                string id, nombre, apellidoP, apellidoM, direccion, ciudad, pais;
+                id = txtID.Text;
+                nombre = txtNombre.Text;
+                apellidoP = txtApellidoP.Text;
+                apellidoM = txtApellidoM.Text;
+                direccion = txtDireccion.Text;
+                ciudad = txtCiudad.Text;
+                pais = txtPais.Text;
+                Persona persona = new Persona();
+                persona.NumIdentificador = id;
+                persona.Nombre = nombre;
+                persona.ApellidoPaterno = apellidoP;
+                persona.ApellidoMaterno = apellidoM;
+                persona.Ciudad = ciudad;
+                persona.Pais = pais;
+                persona.Direccion = direccion;
+                JsonConvert.SerializeObject(persona);
+                persona.crearPersona();
+                MessageBox.Show("Persona agregada correctamente.");
+                LimpiarCampos();
+                listarPersonas();
+            }
+            else{
+                ModificarPersona();
+            }
+            LimpiarCampos();
             listarPersonas();
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            dynamic persona = JObject.Parse(dgListaPersonas.SelectedItem.ToString());
-            string numID = persona["num_identificador"].ToString();
-            Persona pers = new Persona();
-            pers.eliminarPersona(numID);
+            if (dgListaPersonas.SelectedIndex == -1 || dgListaPersonas.SelectedItem.ToString().Equals("{NewItemPlaceholder}"))
+            {
+                MessageBox.Show("No hay datos seleccionados, por favor seleccione.");
+            }
+            else
+            {
+                dynamic persona = JObject.Parse(dgListaPersonas.SelectedItem.ToString());
+                string numID = persona["num_identificador"].ToString();
+                Persona pers = new Persona();
+                pers.eliminarPersona(numID);
+                MessageBox.Show("Persona eliminada correctamente.");
+                listarPersonas();
+            }
             listarPersonas();
         }
 
-        private void btnModificar_Click(object sender, RoutedEventArgs e)
+        private void ModificarPersona()
         {
             if (dgListaPersonas.SelectedIndex == -1)
             {
@@ -96,8 +114,7 @@ namespace FeriaMaipoGrande
             }
             else
             {
-                dynamic perso = JObject.Parse(dgListaPersonas.SelectedItem.ToString());
-                txtApellidoM.Text = perso["apellido_m"].ToString();
+                
                 if (!String.IsNullOrEmpty(txtApellidoM.Text) && !String.IsNullOrEmpty(txtDireccion.Text) &&
                     !String.IsNullOrEmpty(txtApellidoP.Text) && !String.IsNullOrEmpty(txtID.Text) &&
                     !String.IsNullOrEmpty(txtCiudad.Text) && !String.IsNullOrEmpty(txtNombre.Text) && !String.IsNullOrEmpty(txtPais.Text))
@@ -105,6 +122,7 @@ namespace FeriaMaipoGrande
                     try{
                         dynamic per = JObject.Parse(dgListaPersonas.SelectedItem.ToString());
                         string numID = per["num_identificador"].ToString();
+
                         string id, nombre, apellidoP, apellidoM, direccion, ciudad, pais;
                         id = txtID.Text;
                         nombre = txtNombre.Text;
@@ -122,7 +140,6 @@ namespace FeriaMaipoGrande
                         persona.Pais = pais;
                         persona.Direccion = direccion;
                         JsonConvert.SerializeObject(persona);
-                        MessageBox.Show(numID);
                         persona.actualizarPersona(numID);
                         MessageBox.Show("Cliente actualizado exitosamente", "Información", MessageBoxButton.OK);
                     }catch (Exception ex){
@@ -137,7 +154,37 @@ namespace FeriaMaipoGrande
             listarPersonas();
             }
 
+        private void btnCargaDatos_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgListaPersonas.SelectedIndex == -1 || dgListaPersonas.SelectedItem.ToString().Equals("{NewItemPlaceholder}"))
+            {
+                MessageBox.Show("No hay datos seleccionados, por favor seleccione.");
+            }
+            else
+            {
 
+                dynamic perso = JObject.Parse(dgListaPersonas.SelectedItem.ToString());
+                txtApellidoM.Text = perso["apellido_m"].ToString();
+                txtApellidoP.Text = perso["apellido_p"].ToString();
+                txtCiudad.Text = perso["ciudad"].ToString();
+                txtDireccion.Text = perso["direccion"].ToString();
+                txtID.Text = perso["num_identificador"].ToString();
+                txtNombre.Text = perso["nombre"].ToString();
+                txtPais.Text = perso["pais"].ToString();
+            }
+            
+        }
+
+        private void LimpiarCampos()
+        {
+            txtApellidoM.Text = string.Empty;
+            txtApellidoP.Text = string.Empty;
+            txtCiudad.Text = string.Empty;
+            txtDireccion.Text = string.Empty;
+            txtID.Text = string.Empty;
+            txtNombre.Text = string.Empty;
+            txtPais.Text = string.Empty;
+        }
     }
     }
 
