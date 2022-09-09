@@ -62,5 +62,29 @@ namespace FeriaMaipoGrande
             pers.eliminarPersona(numID);
             listarPersonas();
         }
+
+        private void btnAgregar_Click(object sender, RoutedEventArgs e)
+        {
+            string id, nombre, apellidoP, apellidoM, direccion, ciudad, pais;
+            id = txtID.Text;
+            nombre = txtNombre.Text;
+            apellidoP = txtApellidoP.Text;
+            apellidoM = txtApellidoM.Text;
+            direccion = txtDireccion.Text;
+            ciudad = txtCiudad.Text;
+            pais = txtPais.Text;
+            Persona persona = new Persona();
+            persona.NumIdentificador = id;
+            persona.Nombre = nombre;
+            persona.ApellidoPaterno = apellidoP;
+            persona.ApellidoMaterno = apellidoM;
+            persona.Ciudad = ciudad;
+            persona.Pais = pais;
+            persona.Direccion = direccion;
+            string personaJson = JsonConvert.SerializeObject(persona);
+            MessageBox.Show(personaJson);
+            persona.crearPersona();
+            listarPersonas();
+        }
     }
 }
