@@ -65,5 +65,10 @@ namespace FeriaMaipoGrande.Datos
         {
             await dbapi.CrearPersonaAsync("persona", persona);
         }
+
+        public async void actualizarPersonaDAO(string numIdentificador, PersonaDAO persona)
+        {
+            await dbapi.ActualizarPersonaAsync("persona/", numIdentificador, persona);
+        }
     }
 }

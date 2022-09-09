@@ -54,14 +54,7 @@ namespace FeriaMaipoGrande
 
         }
 
-        private void btnEliminar_Click(object sender, RoutedEventArgs e)
-        {
-            dynamic persona = JObject.Parse(dgListaPersonas.SelectedItem.ToString());
-            string numID = persona["num_identificador"].ToString();
-            Persona pers = new Persona();
-            pers.eliminarPersona(numID);
-            listarPersonas();
-        }
+        
 
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
@@ -81,9 +74,44 @@ namespace FeriaMaipoGrande
             persona.Ciudad = ciudad;
             persona.Pais = pais;
             persona.Direccion = direccion;
-            string personaJson = JsonConvert.SerializeObject(persona);
-            MessageBox.Show(personaJson);
+            JsonConvert.SerializeObject(persona);
             persona.crearPersona();
+            listarPersonas();
+        }
+
+        private void btnEliminar_Click(object sender, RoutedEventArgs e)
+        {
+            dynamic persona = JObject.Parse(dgListaPersonas.SelectedItem.ToString());
+            string numID = persona["num_identificador"].ToString();
+            Persona pers = new Persona();
+            pers.eliminarPersona(numID);
+            listarPersonas();
+        }
+
+        private void btnModificar_Click(object sender, RoutedEventArgs e)
+        {
+
+            dynamic per = JObject.Parse(dgListaPersonas.SelectedItem.ToString());
+            string numID = per["num_identificador"].ToString();
+            string id, nombre, apellidoP, apellidoM, direccion, ciudad, pais;
+            id = txtID.Text;
+            nombre = txtNombre.Text;
+            apellidoP = txtApellidoP.Text;
+            apellidoM = txtApellidoM.Text;
+            direccion = txtDireccion.Text;
+            ciudad = txtCiudad.Text;
+            pais = txtPais.Text;
+            Persona persona = new Persona();
+            persona.NumIdentificador = id;
+            persona.Nombre = nombre;
+            persona.ApellidoPaterno = apellidoP;
+            persona.ApellidoMaterno = apellidoM;
+            persona.Ciudad = ciudad;
+            persona.Pais = pais;
+            persona.Direccion = direccion;
+            JsonConvert.SerializeObject(persona);
+            MessageBox.Show(numID);
+            persona.actualizarPersona(numID);
             listarPersonas();
         }
     }

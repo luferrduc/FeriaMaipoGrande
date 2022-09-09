@@ -14,7 +14,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Right" Margin="0,345,372.8,0" Width="75" Height="19" VerticalAlignment="Top" Click="btnEliminar_Click"/>
-        <Button x:Name="btnModificar" Content="Modificar" HorizontalAlignment="Right" Margin="0,345,501.8,0" Width="75" Height="19" VerticalAlignment="Top"/>
+        <Button x:Name="btnModificar" Content="Modificar" HorizontalAlignment="Right" Margin="0,345,501.8,0" Width="75" Height="19" VerticalAlignment="Top" Click="btnModificar_Click"/>
         <Label Content="Listado de personas registradas" HorizontalAlignment="Left" Margin="20,23,0,0" VerticalAlignment="Top" Width="178"/>
         <Canvas Margin="0,23,35.8,113.6" HorizontalAlignment="Right" Width="235">
             <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Canvas.Left="123" Canvas.Top="238" Click="btnAgregar_Click"/>

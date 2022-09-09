@@ -76,5 +76,18 @@ namespace FeriaMaipoGrande.Negocio
             personaDAO.Direccion = Direccion;
             personaDAO.crearPersonaDAO("persona", personaDAO);
         }
+
+        public void actualizarPersona(string numIdentificador)
+        {
+            PersonaDAO personaDAO = new PersonaDAO();
+            personaDAO.Nombre = Nombre;
+            personaDAO.NumIdentificador = NumIdentificador;
+            personaDAO.Pais = Pais;
+            personaDAO.ApellidoMaterno = ApellidoMaterno;
+            personaDAO.ApellidoPaterno = ApellidoPaterno;
+            personaDAO.Ciudad = Ciudad;
+            personaDAO.Direccion = Direccion;
+            personaDAO.actualizarPersonaDAO(numIdentificador, personaDAO);
+        }
     }
 }

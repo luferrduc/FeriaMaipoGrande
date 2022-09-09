@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -44,6 +45,17 @@ namespace FeriaMaipoGrande.Datos
             var response = await client.PostAsJsonAsync(string.Concat(url,path), persona);
             response.EnsureSuccessStatusCode();
             // return URI of the created resource.
+            return response.Headers.Location;
+        }
+
+        public async Task<Uri> ActualizarPersonaAsync(string path, string numIdentificador, PersonaDAO persona)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.PutAsJsonAsync(string.Concat(url, path, numIdentificador), persona);
+            response.EnsureSuccessStatusCode();
+
+            // Deserialize the updated product from the response body.
+
             return response.Headers.Location;
         }
     }
