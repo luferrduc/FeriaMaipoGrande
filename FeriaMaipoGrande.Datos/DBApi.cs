@@ -54,8 +54,6 @@ namespace FeriaMaipoGrande.Datos
             HttpResponseMessage response = await client.PutAsJsonAsync(string.Concat(url, path, numIdentificador), persona);
             response.EnsureSuccessStatusCode();
 
-            // Deserialize the updated product from the response body.
-
             return response.Headers.Location;
         }
     }
