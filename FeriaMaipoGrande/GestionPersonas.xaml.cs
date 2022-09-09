@@ -1,4 +1,6 @@
 ﻿using FeriaMaipoGrande.Negocio;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,5 +54,90 @@ namespace FeriaMaipoGrande
 
         }
 
+        
+
+        private void btnAgregar_Click(object sender, RoutedEventArgs e)
+        {
+            string id, nombre, apellidoP, apellidoM, direccion, ciudad, pais;
+            id = txtID.Text;
+            nombre = txtNombre.Text;
+            apellidoP = txtApellidoP.Text;
+            apellidoM = txtApellidoM.Text;
+            direccion = txtDireccion.Text;
+            ciudad = txtCiudad.Text;
+            pais = txtPais.Text;
+            Persona persona = new Persona();
+            persona.NumIdentificador = id;
+            persona.Nombre = nombre;
+            persona.ApellidoPaterno = apellidoP;
+            persona.ApellidoMaterno = apellidoM;
+            persona.Ciudad = ciudad;
+            persona.Pais = pais;
+            persona.Direccion = direccion;
+            JsonConvert.SerializeObject(persona);
+            persona.crearPersona();
+            listarPersonas();
+        }
+
+        private void btnEliminar_Click(object sender, RoutedEventArgs e)
+        {
+            dynamic persona = JObject.Parse(dgListaPersonas.SelectedItem.ToString());
+            string numID = persona["num_identificador"].ToString();
+            Persona pers = new Persona();
+            pers.eliminarPersona(numID);
+            listarPersonas();
+        }
+
+        private void btnModificar_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgListaPersonas.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione una persona.");
+            }
+            else
+            {
+                dynamic perso = JObject.Parse(dgListaPersonas.SelectedItem.ToString());
+                txtApellidoM.Text = perso["apellido_m"].ToString();
+                if (!String.IsNullOrEmpty(txtApellidoM.Text) && !String.IsNullOrEmpty(txtDireccion.Text) &&
+                    !String.IsNullOrEmpty(txtApellidoP.Text) && !String.IsNullOrEmpty(txtID.Text) &&
+                    !String.IsNullOrEmpty(txtCiudad.Text) && !String.IsNullOrEmpty(txtNombre.Text) && !String.IsNullOrEmpty(txtPais.Text))
+                { 
+                    try{
+                        dynamic per = JObject.Parse(dgListaPersonas.SelectedItem.ToString());
+                        string numID = per["num_identificador"].ToString();
+                        string id, nombre, apellidoP, apellidoM, direccion, ciudad, pais;
+                        id = txtID.Text;
+                        nombre = txtNombre.Text;
+                        apellidoP = txtApellidoP.Text;
+                        apellidoM = txtApellidoM.Text;
+                        direccion = txtDireccion.Text;
+                        ciudad = txtCiudad.Text;
+                        pais = txtPais.Text;
+                        Persona persona = new Persona();
+                        persona.NumIdentificador = id;
+                        persona.Nombre = nombre;
+                        persona.ApellidoPaterno = apellidoP;
+                        persona.ApellidoMaterno = apellidoM;
+                        persona.Ciudad = ciudad;
+                        persona.Pais = pais;
+                        persona.Direccion = direccion;
+                        JsonConvert.SerializeObject(persona);
+                        MessageBox.Show(numID);
+                        persona.actualizarPersona(numID);
+                        MessageBox.Show("Cliente actualizado exitosamente", "Información", MessageBoxButton.OK);
+                    }catch (Exception ex){
+                        MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Existen campos sin rellenar", "Error al modificar", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            listarPersonas();
+            }
+
+
     }
-}
+    }
+
