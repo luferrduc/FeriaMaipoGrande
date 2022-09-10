@@ -112,6 +112,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GestionUsuarios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -125,6 +129,9 @@
     </Compile>
     <Compile Include="GestionPersonas.xaml.cs">
       <DependentUpon>GestionPersonas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GestionUsuarios.xaml.cs">
+      <DependentUpon>GestionUsuarios.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -186,8 +193,6 @@
     <Resource Include="Imagenes\Atras.png" />
     <Resource Include="Imagenes\Client.png" />
     <Resource Include="Imagenes\Client2.png" />
-    <Resource Include="Imagenes\dark_logo_transparent_background.png" />
-    <Resource Include="Imagenes\dark_logo_white_background.jpg" />
     <Resource Include="Imagenes\Data-Edit.png" />
     <Resource Include="Imagenes\delete.png" />
     <Resource Include="Imagenes\Document-01.png" />

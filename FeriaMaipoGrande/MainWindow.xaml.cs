@@ -35,5 +35,23 @@ namespace FeriaMaipoGrande
             gestionP.Show();
             Close();
         }
+
+        private void btnUsuarios_Click(object sender, RoutedEventArgs e)
+        {
+            GestionUsuarios gestionU = new GestionUsuarios();
+            gestionU.Show();
+            Close();
+        }
+
+
+        private void btnPersonas_MouseEnter(object sender, MouseEventArgs e)
+        {
+            //btnPersonas.Background = new SolidColorBrush(Color.FromArgb(217,118,61,8));
+        }
+
+        private void btnPersonas_MouseLeave(object sender, MouseEventArgs e)
+        {
+            //btnPersonas.Background = new SolidColorBrush(Color.FromArgb(217, 118, 61,10));
+        }
     }
 }
