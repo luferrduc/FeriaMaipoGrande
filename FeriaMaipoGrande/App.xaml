@@ -4,33 +4,11 @@
              xmlns:local="clr-namespace:FeriaMaipoGrande"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <!--<Style TargetType="Button" x:Key="btnOrange">
-            <Setter Property="Background" Value="#fff"/>
-            <Setter Property="Foreground" Value="#000"/>
-            <Setter Property="FontSize" Value="15"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
-                                    CornerRadius="5"
-                                    BorderThickness="1"
-                                    Padding="5"
-                                    BorderBrush="#000">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
-
-                            </ContentPresenter>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="False">
-                    <Setter Property="Background" Value="#E58954"/>
-                    <Setter Property="Foreground" Value="#fff"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>-->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Dictionaries/EstiloBoton.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
        
     </Application.Resources>
 </Application>

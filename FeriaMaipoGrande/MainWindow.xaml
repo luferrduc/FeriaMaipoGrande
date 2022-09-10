@@ -9,42 +9,32 @@
         Title="Menú Principal" Height="500.336" Width="829.195">
     <Grid>
         <Image HorizontalAlignment="Left" Height="55" Margin="92.75,10,0,0" VerticalAlignment="Top" Width="53" Grid.Column="1"/>
-        <Button x:Name="btnPersonas" Content="Gestionar Personas" HorizontalAlignment="Left" Margin="145,122,0,0" VerticalAlignment="Top" Width="196" Height="106" Click="btnPersonas_Click" Background="#D9763D" Foreground="White" FontWeight="Bold" MouseEnter="btnPersonas_MouseEnter" MouseLeave="btnPersonas_MouseLeave">
+        <Button x:Name="btnPersonas" Content="Gestionar Personas" HorizontalAlignment="Left" Margin="145,122,0,0" VerticalAlignment="Top" Width="196" Height="106" Click="btnPersonas_Click" Foreground="White" FontWeight="Bold" Style="{DynamicResource ButtonStyle1}">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="8" Color="#D9D9D9"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnUsuarios" Content="Gestionar Usuarios" HorizontalAlignment="Left" Margin="363,122,0,0" VerticalAlignment="Top" Width="161" Height="106" Click="btnUsuarios_Click" Background="#D9763D" Foreground="White" FontWeight="Bold" >
-             <!--<Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="Background" Value="Green"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="White"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>-->
+        <Button x:Name="btnUsuarios" Content="Gestionar Usuarios" HorizontalAlignment="Left" Margin="363,122,0,0" VerticalAlignment="Top" Width="161" Height="106" Click="btnUsuarios_Click" Foreground="White" FontWeight="Bold" Style="{DynamicResource ButtonStyle1}">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="8" Color="#D9D9D9"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnVentas" Content="Gestionar Ventas" HorizontalAlignment="Left" Margin="548,122,0,0" VerticalAlignment="Top" Width="127" Height="106" Click="btnUsuarios_Click" Background="#D9763D" Foreground="White" FontWeight="Bold">
+        <Button x:Name="btnVentas" Content="Gestionar Ventas" HorizontalAlignment="Left" Margin="548,122,0,0" VerticalAlignment="Top" Width="127" Height="106" Click="btnUsuarios_Click" Foreground="White" FontWeight="Bold" Style="{DynamicResource ButtonStyle1}">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="8" Color="#D9D9D9"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnPagos" Content="Gestionar Pagos" HorizontalAlignment="Left" Margin="479,252,0,0" VerticalAlignment="Top" Width="196" Height="106" Click="btnPersonas_Click" Background="#D9763D" Foreground="White" FontWeight="Bold">
+        <Button x:Name="btnPagos" Content="Gestionar Pagos" HorizontalAlignment="Left" Margin="479,252,0,0" VerticalAlignment="Top" Width="196" Height="106" Click="btnPersonas_Click" Foreground="White" FontWeight="Bold" Style="{DynamicResource ButtonStyle1}">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="8" Color="#D9D9D9"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnContratos" Content="Gestionar Contratos" HorizontalAlignment="Left" Margin="297,252,0,0" VerticalAlignment="Top" Width="160" Height="106" Click="btnUsuarios_Click" Background="#D9763D" Foreground="White" FontWeight="Bold" >
+        <Button x:Name="btnContratos" Content="Gestionar Contratos" HorizontalAlignment="Left" Margin="297,252,0,0" VerticalAlignment="Top" Width="160" Height="106" Click="btnUsuarios_Click" Foreground="White" FontWeight="Bold" Style="{DynamicResource ButtonStyle1}">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="8" Color="#D9D9D9"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnSubastas" Content="Gestionar Subastas" HorizontalAlignment="Left" Margin="145,252,0,0" VerticalAlignment="Top" Width="127" Height="106" Click="btnUsuarios_Click" Background="#D9763D" Foreground="White" FontWeight="Bold">
+        <Button x:Name="btnSubastas" Content="Gestionar Subastas" HorizontalAlignment="Left" Margin="145,252,0,0" VerticalAlignment="Top" Width="127" Height="106" Click="btnUsuarios_Click" Foreground="White" FontWeight="Bold" Style="{DynamicResource ButtonStyle1}">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="8" Color="#D9D9D9"/>
             </Button.Effect>
