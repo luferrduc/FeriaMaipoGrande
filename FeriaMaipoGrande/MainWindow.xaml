@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FeriaMaipoGrande"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="Menú Principal" Height="450" Width="800">
     <Grid>
         <Image HorizontalAlignment="Left" Height="55" Margin="682,10,0,0" VerticalAlignment="Top" Width="53"/>

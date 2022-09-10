@@ -25,9 +25,8 @@ namespace FeriaMaipoGrande
         public MainWindow()
         {
             InitializeComponent();
-            //Datos.ApiRest.DBApi kd = new Datos.ApiRest.DBApi();
-            //dynamic datos = kd.Get();
-            //MessageBox.Show(Convert.ToString(datos));
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
         }
 
         private void btnPersonas_Click(object sender, RoutedEventArgs e)

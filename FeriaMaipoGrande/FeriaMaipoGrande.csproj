@@ -180,5 +180,25 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Imagenes\Add-Client.png" />
+    <Resource Include="Imagenes\Atras.png" />
+    <Resource Include="Imagenes\Client.png" />
+    <Resource Include="Imagenes\Client2.png" />
+    <Resource Include="Imagenes\dark_logo_transparent_background.png" />
+    <Resource Include="Imagenes\dark_logo_white_background.jpg" />
+    <Resource Include="Imagenes\Data-Edit.png" />
+    <Resource Include="Imagenes\delete.png" />
+    <Resource Include="Imagenes\Document-01.png" />
+    <Resource Include="Imagenes\Document-Add-02.png" />
+    <Resource Include="Imagenes\Documents-02.png" />
+    <Resource Include="Imagenes\Garbage.png" />
+    <Resource Include="Imagenes\list.png" />
+    <Resource Include="Imagenes\Save.png" />
+    <Resource Include="Imagenes\Search-Find.png" />
+    <Resource Include="Imagenes\Text-Edit.png" />
+    <Resource Include="Imagenes\Upload.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
