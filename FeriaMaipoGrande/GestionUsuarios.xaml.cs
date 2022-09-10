@@ -22,6 +22,7 @@ namespace FeriaMaipoGrande
         public GestionUsuarios()
         {
             InitializeComponent();
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
         private void btnRegresar_Click(object sender, RoutedEventArgs e)

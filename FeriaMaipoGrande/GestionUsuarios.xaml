@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FeriaMaipoGrande"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="Gestión de Usuarios" Height="512.6" Width="843.2">
     <Grid>
         <Button x:Name="btnRegresar" HorizontalAlignment="Right" Margin="0,436,687.8,0" Width="127" Click="btnRegresar_Click" Height="28" VerticalAlignment="Top">
