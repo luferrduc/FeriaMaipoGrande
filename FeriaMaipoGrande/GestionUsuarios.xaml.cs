@@ -15,6 +15,7 @@ using FeriaMaipoGrande.Negocio;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
+
 namespace FeriaMaipoGrande
 {
     /// <summary>
@@ -25,6 +26,7 @@ namespace FeriaMaipoGrande
         public GestionUsuarios()
         {
             InitializeComponent();
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             listarPersonas();
             listarUsuarios();
             cargarCombo();
@@ -203,6 +205,7 @@ namespace FeriaMaipoGrande
             string rol = userrr["id_rol"];
 
             return int.Parse(rol);
+
         }
     }
 }
