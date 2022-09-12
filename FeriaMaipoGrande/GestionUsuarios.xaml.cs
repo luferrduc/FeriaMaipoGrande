@@ -157,7 +157,7 @@ namespace FeriaMaipoGrande
             } else 
             {
                 if(!String.IsNullOrEmpty(txtEmail.Text) && !String.IsNullOrEmpty(txtID.Text) && !String.IsNullOrEmpty(txtPassword1.Password) &&
-                    !String.IsNullOrEmpty(txtPassword2.Password) && !String.IsNullOrEmpty(txtUsername.Text))
+                    !String.IsNullOrEmpty(passPassword2.Password) && !String.IsNullOrEmpty(txtUsername.Text))
                 {
                     try
                     {
@@ -168,8 +168,8 @@ namespace FeriaMaipoGrande
 
                         email = txtEmail.Text;
                         userId = txtID.Text;
-                        password1 = txtPassword1.Password;
-                        password2 = txtPassword2.Password;
+                        password1 = passPassword1.Password;
+                        password2 = passPassword2.Password;
                         userName = txtUsername.Text;
                         int userRolID = obtenerIdRol();
 
