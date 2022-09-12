@@ -112,6 +112,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GestionUsuarios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -125,6 +129,9 @@
     </Compile>
     <Compile Include="GestionPersonas.xaml.cs">
       <DependentUpon>GestionPersonas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GestionUsuarios.xaml.cs">
+      <DependentUpon>GestionUsuarios.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

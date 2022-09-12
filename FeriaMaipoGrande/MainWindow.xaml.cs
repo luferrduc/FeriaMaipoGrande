@@ -36,5 +36,12 @@ namespace FeriaMaipoGrande
             gestionP.Show();
             Close();
         }
+
+        private void btnUsuarios_Click(object sender, RoutedEventArgs e)
+        {
+            GestionUsuarios gestionU = new GestionUsuarios();
+            gestionU.Show();
+            Close();
+        }
     }
 }
