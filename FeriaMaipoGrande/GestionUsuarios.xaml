@@ -15,6 +15,7 @@
             </Canvas>
         </Button>
         <DataGrid x:Name="dgListaPersonas" HorizontalAlignment="Left" Margin="20,50,0,0" Width="513" Height="109" VerticalAlignment="Top">
+
             <DataGrid.Columns>
                 <DataGridTextColumn/>
             </DataGrid.Columns>
@@ -50,11 +51,11 @@
             <ComboBox Canvas.Left="89" Canvas.Top="114" Width="120"/>
         </Canvas>
         <DataGrid x:Name="dgListaUsuarios" HorizontalAlignment="Left" Margin="22,181,0,0" Width="513" Height="150" VerticalAlignment="Top">
+
             <DataGrid.Columns>
                 <DataGridTextColumn/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Listado de personas registradas" HorizontalAlignment="Left" Margin="20,23,0,0" VerticalAlignment="Top" Width="178"/>
-
     </Grid>
 </Window>

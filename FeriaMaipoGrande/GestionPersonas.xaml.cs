@@ -163,7 +163,7 @@ namespace FeriaMaipoGrande
                 }
             }
             listarPersonas();
-            }
+        }
 
         private void btnCargaDatos_Click(object sender, RoutedEventArgs e)
         {

@@ -8,6 +8,7 @@
         ResizeMode="NoResize"
         Title="Menú Principal" Height="500.336" Width="829.195">
     <Grid>
+
         <Image HorizontalAlignment="Left" Height="55" Margin="92.75,10,0,0" VerticalAlignment="Top" Width="53" Grid.Column="1"/>
         <Button x:Name="btnPersonas" Content="Gestionar Personas" HorizontalAlignment="Left" Margin="145,122,0,0" VerticalAlignment="Top" Width="196" Height="106" Click="btnPersonas_Click" Foreground="White" FontWeight="Bold" Style="{DynamicResource ButtonStyle1}">
             <Button.Effect>
@@ -39,6 +40,10 @@
                 <DropShadowEffect BlurRadius="8" Color="#D9D9D9"/>
             </Button.Effect>
         </Button>
+        <Image HorizontalAlignment="Left" Height="55" Margin="682,10,0,0" VerticalAlignment="Top" Width="53"/>
+        <Button x:Name="btnPersonas" Content="Gestionar Personas" HorizontalAlignment="Left" Margin="198,120,0,0" VerticalAlignment="Top" Width="138" Height="88" Click="btnPersonas_Click"/>
+        <Button x:Name="btnUsuarios" Content="Gestionar Usuarios" HorizontalAlignment="Left" Margin="419,120,0,0" VerticalAlignment="Top" Width="138" Height="88" Click="btnUsuarios_Click"/>
+
     </Grid>
 
 </Window>

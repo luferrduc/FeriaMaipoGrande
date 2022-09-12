@@ -51,7 +51,7 @@ namespace FeriaMaipoGrande.Datos
 
         public dynamic listarPersonasDAO()
         {
-            dynamic datos = dbapi.Get("persona");
+            dynamic datos = dbapi.GetPersonas("persona");
 
             return datos;
         }

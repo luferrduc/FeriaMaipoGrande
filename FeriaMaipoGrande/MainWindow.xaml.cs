@@ -43,15 +43,5 @@ namespace FeriaMaipoGrande
             Close();
         }
 
-
-        private void btnPersonas_MouseEnter(object sender, MouseEventArgs e)
-        {
-            //btnPersonas.Background = new SolidColorBrush(Color.FromArgb(217,118,61,8));
-        }
-
-        private void btnPersonas_MouseLeave(object sender, MouseEventArgs e)
-        {
-            //btnPersonas.Background = new SolidColorBrush(Color.FromArgb(217, 118, 61,10));
-        }
     }
 }
