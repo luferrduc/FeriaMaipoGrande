@@ -36,17 +36,15 @@ namespace FeriaMaipoGrande
         {
             if (dgListaUsuarios.SelectedIndex == -1 || dgListaUsuarios.SelectedItem.ToString().Equals("{NewItemPlaceholder}"))
             {
-                string id, username, password, password2, email;
+                string id, password, password2, email;
                 Usuario user = new Usuario();
                 id = txtID.Text;
-                username = txtUsername.Text;
-                password = txtPassword1.Password;
-                password2 = txtPassword2.Password;
+                password = passPassword.Password;
+                password2 = passPassword2.Password;
                 email = txtEmail.Text;
                 dynamic userrr = JObject.Parse(cbRol.SelectedItem.ToString());
                 string rol = userrr["id_rol"];
                 user.UserID = int.Parse(id);
-                user.Username = username;
                 user.Password = password;
                 user.Rol = int.Parse(rol);
                 user.Email = email;

@@ -43,13 +43,13 @@
             </Button>
             <Label Content="Rol:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="54" Canvas.Top="144"/>
             <Label x:Name="lblPersonaID" Content="Persona ID:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="15" Canvas.Top="26"/>
-            <TextBox x:Name="txtApellidoP" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" Canvas.Left="90" Canvas.Top="30" RenderTransformOrigin="0.458,1.461"/>
-            <PasswordBox x:Name="passPasword" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="121" Canvas.Left="89" Canvas.Top="86"/>
+            <TextBox x:Name="textID" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" Canvas.Left="90" Canvas.Top="30" RenderTransformOrigin="0.458,1.461"/>
+            <PasswordBox x:Name="passPassword" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="121" Canvas.Left="89" Canvas.Top="86"/>
             <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" Canvas.Left="89" Canvas.Top="58"/>
             <Label x:Name="lblEmail" Content="Email:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.188,0.727" Canvas.Left="42" Canvas.Top="58"/>
             <Label x:Name="lblPassword" Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.188,0.727" Canvas.Left="26" Canvas.Top="85"/>
             <ComboBox x:Name="cbRol" Canvas.Left="90" Canvas.Top="146" Width="120"/>
-            <PasswordBox x:Name="passPasword2" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="121" Canvas.Left="90" Canvas.Top="114"/>
+            <PasswordBox x:Name="passPassword2" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="121" Canvas.Left="90" Canvas.Top="114"/>
             <Label x:Name="lblPassword2" Content="RePassword:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.188,0.727" Canvas.Left="15" Canvas.Top="114"/>
         </Canvas>
         <DataGrid x:Name="dgListaUsuarios" HorizontalAlignment="Left" Margin="22,181,0,0" Width="513" Height="150" VerticalAlignment="Top">
