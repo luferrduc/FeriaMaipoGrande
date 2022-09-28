@@ -80,36 +80,6 @@ namespace FeriaMaipoGrande.Negocio
             dynamic roles = user.rolesUsuariosDAO();
             return roles;
         }
-
-        public int datoSeleccionado(string descripcion)
-        {
-            int dato;
-            if (descripcion == "administrador")
-            {
-                dato = 1;
-                return dato;
-            } else if (descripcion == "productor")
-            {
-                dato = 2;
-                return dato;
-            }
-            else if (descripcion == "cliente externo")
-            {
-                dato = 3;
-                return dato;
-            }
-            else if (descripcion == "cliente interno")
-            {
-                dato = 4;
-                return dato;
-            }
-            else if (descripcion == "transportista")
-            {
-                dato = 5;
-                return dato;
-            }
-            return dato = 0;
-        }
     }
 }
 

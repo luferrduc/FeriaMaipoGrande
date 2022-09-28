@@ -36,9 +36,10 @@ namespace FeriaMaipoGrande
         {
             if (dgListaUsuarios.SelectedIndex == -1 || dgListaUsuarios.SelectedItem.ToString().Equals("{NewItemPlaceholder}"))
             {
-                string id, password, password2, email;
+                string username, id, password, password2, email;
                 Usuario user = new Usuario();
                 id = txtID.Text;
+                username = txtUsername.Text;
                 password = passPassword.Password;
                 password2 = passPassword2.Password;
                 email = txtEmail.Text;
@@ -46,10 +47,10 @@ namespace FeriaMaipoGrande
                 string rol = userrr["id_rol"];
                 user.UserID = int.Parse(id);
                 user.Password = password;
+                user.Username = username;
                 user.Rol = int.Parse(rol);
                 user.Email = email;
                 JsonConvert.SerializeObject(user);
-                //MessageBox.Show(userrr.ToString());
                 if(password != password2)
                 {
                     MessageBox.Show("Las contraseñas deben coincidir");
@@ -60,9 +61,8 @@ namespace FeriaMaipoGrande
                     MessageBox.Show("Usuario creado correctamente.");
                     LimpiarCampos();
                     listarPersonas();
-                    listarUsuarios();
                 }
-
+                listarUsuarios();
             }
             else
             {
@@ -87,7 +87,7 @@ namespace FeriaMaipoGrande
                 MessageBox.Show("Persona eliminada correctamente.");
                 listarPersonas();
             }
-            listarPersonas();
+            listarUsuarios();
         }
 
         private void btnCargaDatos_Click(object sender, RoutedEventArgs e)
@@ -99,10 +99,10 @@ namespace FeriaMaipoGrande
             else
             {
                 dynamic user = JObject.Parse(dgListaUsuarios.SelectedItem.ToString());
-                txtUsername.Text = user["nombre_usuario"].ToString();
                 txtEmail.Text = user["email"].ToString();
-                txtPassword1.Password = user["password"].ToString();
-                txtPassword2.Password = user["password"].ToString();
+                txtUsername.Text = user["nombre_usuario"].ToString();
+                passPassword.Password = user["password"].ToString();
+                passPassword2.Password = user["password"].ToString();
                 cbRol.SelectedItem = user["rol_usuario"];
 
             }
@@ -133,9 +133,9 @@ namespace FeriaMaipoGrande
         {
             txtEmail.Text = string.Empty;
             txtID.Text = string.Empty;
-            txtPassword1.Password = string.Empty;
-            txtPassword2.Password = string.Empty;
             txtUsername.Text = string.Empty;
+            passPassword.Password = string.Empty;
+            passPassword2.Password = string.Empty;
         }
 
         private void cargarCombo()
@@ -154,32 +154,31 @@ namespace FeriaMaipoGrande
                 MessageBox.Show("No hay datos seleccionados, por favor seleccione.");
             } else 
             {
-                if(!String.IsNullOrEmpty(txtEmail.Text) && !String.IsNullOrEmpty(txtID.Text) && !String.IsNullOrEmpty(txtPassword1.Password) &&
-                    !String.IsNullOrEmpty(passPassword2.Password) && !String.IsNullOrEmpty(txtUsername.Text))
+                if(!String.IsNullOrEmpty(txtEmail.Text) && !String.IsNullOrEmpty(txtID.Text) && !String.IsNullOrEmpty(passPassword.Password) &&
+                    !String.IsNullOrEmpty(passPassword2.Password))
                 {
                     try
                     {
                         dynamic user = JObject.Parse(dgListaUsuarios.SelectedItem.ToString());
                         string username = user["nombre_usuario"].ToString();
 
-                        string userName, email, password1, password2, userId;
+                        string  email, password1, password2, userId;
 
                         email = txtEmail.Text;
+                        username = txtUsername.Text;
                         userId = txtID.Text;
-                        password1 = passPassword1.Password;
+                        password1 = passPassword.Password;
                         password2 = passPassword2.Password;
-                        userName = txtUsername.Text;
                         int userRolID = obtenerIdRol();
-
+                        //---------------------------------------------------------------//
                         Usuario usuario = new Usuario();
                         usuario.Email = email;
                         usuario.UserID = int.Parse(userId);
+                        usuario.Username = username;
                         usuario.Password = password1;
                         usuario.Password = password2;
-                        usuario.Username = userName;
                         usuario.Rol = userRolID;
-                        
-                        MessageBox.Show(JsonConvert.SerializeObject(usuario).ToString());
+                        //---------------------------------------------------------------//
                         usuario.actualizarUsuario(username);
                         MessageBox.Show("Usuario actualizado exitosamente", "Información", MessageBoxButton.OK);
 
@@ -201,9 +200,7 @@ namespace FeriaMaipoGrande
         {
             dynamic userrr = JObject.Parse(cbRol.SelectedItem.ToString());
             string rol = userrr["id_rol"];
-
             return int.Parse(rol);
-
         }
     }
 }
