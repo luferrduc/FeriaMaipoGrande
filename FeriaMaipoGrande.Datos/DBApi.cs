@@ -14,7 +14,8 @@ namespace FeriaMaipoGrande.Datos
 {
     public class DBApi
     {
-        string url = "http://localhost:3001/api/";
+        string url = "https://api-feria-web-production.up.railway.app/api/";
+        string url2 = "http://localhost:3001/api/";
         /* METODOS PARA EL MANTENEDOR DE PERSONAS */
         public dynamic GetPersonas(string path)
         {
@@ -76,7 +77,7 @@ namespace FeriaMaipoGrande.Datos
 
         public dynamic GetRoles()
         {
-            HttpWebRequest myWebRequest = (HttpWebRequest)WebRequest.Create(string.Concat("http://localhost:3001/api/usuarios/rol/rol_usuarios"));
+            HttpWebRequest myWebRequest = (HttpWebRequest)WebRequest.Create(string.Concat(url, "usuarios/rol/rol_usuarios"));
             myWebRequest.UserAgent = " Mozilla / 5.0 ( Windows NT 6.1 ; WOW64 ; rv : 23.0 ) Gecko / 20100101 Firefox / 23.0 ";
             //myWebRequest.CookieContainer = myCookie ;
             myWebRequest.Credentials = CredentialCache.DefaultCredentials;
