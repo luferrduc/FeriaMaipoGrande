@@ -20,7 +20,7 @@
                 <DropShadowEffect BlurRadius="8" Color="#D9D9D9"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnVentas" Content="Gestionar Ventas" HorizontalAlignment="Left" Margin="548,122,0,0" VerticalAlignment="Top" Width="127" Height="106" Foreground="White" FontWeight="Bold" Style="{DynamicResource ButtonStyle1}">
+        <Button x:Name="btnVentas" Content="Gestionar Ventas" HorizontalAlignment="Left" Margin="548,122,0,0" VerticalAlignment="Top" Width="127" Height="106" Foreground="White" FontWeight="Bold" Style="{DynamicResource ButtonStyle1}" Click="btnVentas_Click">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="8" Color="#D9D9D9"/>
             </Button.Effect>
@@ -35,7 +35,7 @@
                 <DropShadowEffect BlurRadius="8" Color="#D9D9D9"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnSubastas" Content="Gestionar Subastas" HorizontalAlignment="Left" Margin="145,252,0,0" VerticalAlignment="Top" Width="127" Height="106" Foreground="White" FontWeight="Bold" Style="{DynamicResource ButtonStyle1}">
+        <Button x:Name="btnSubastas" Content="Gestionar Subastas" HorizontalAlignment="Left" Margin="145,252,0,0" VerticalAlignment="Top" Width="127" Height="106" Foreground="White" FontWeight="Bold" Style="{DynamicResource ButtonStyle1}" Click="btnSubastas_Click">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="8" Color="#D9D9D9"/>
             </Button.Effect>

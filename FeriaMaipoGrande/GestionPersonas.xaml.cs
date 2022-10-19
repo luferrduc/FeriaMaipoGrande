@@ -77,9 +77,7 @@ namespace FeriaMaipoGrande
                     persona.Direccion = direccion;
                     JsonConvert.SerializeObject(persona);
                     persona.crearPersona();
-                    MessageBox.Show("Persona agregada correctamente.");
-                    LimpiarCampos();
-                    listarPersonas();
+                    MessageBox.Show("Se ha creado la persona correctamente", "Tarea completada", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
@@ -98,12 +96,12 @@ namespace FeriaMaipoGrande
         {
             if (dgListaPersonas.SelectedIndex == -1 || dgListaPersonas.SelectedItem.ToString().Equals("{NewItemPlaceholder}"))
             {
-                MessageBox.Show("No hay datos seleccionados, por favor seleccione.","Infromación", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("No hay datos seleccionados, por favor seleccione.","Información", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBoxResult resutlado = MessageBox.Show("Está seguro que desea eliminar a esta persona?", "Alerta", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                if(resutlado == MessageBoxResult.Yes)
+                MessageBoxResult resultado = MessageBox.Show("Está seguro que desea eliminar a esta persona?", "Alerta", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if(resultado == MessageBoxResult.Yes)
                 {
                     dynamic persona = JObject.Parse(dgListaPersonas.SelectedItem.ToString());
                     string numID = persona["num_identificador"].ToString();
@@ -169,11 +167,11 @@ namespace FeriaMaipoGrande
         {
             if (dgListaPersonas.SelectedIndex == -1 || dgListaPersonas.SelectedItem.ToString().Equals("{NewItemPlaceholder}"))
             {
-                MessageBox.Show("No hay datos seleccionados, por favor seleccione.");
+                MessageBox.Show("No hay datos seleccionados, por favor seleccione.", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-
+                txtID.IsEnabled = false;
                 dynamic perso = JObject.Parse(dgListaPersonas.SelectedItem.ToString());
                 txtApellidoM.Text = perso["apellido_m"].ToString();
                 txtApellidoP.Text = perso["apellido_p"].ToString();
@@ -195,6 +193,7 @@ namespace FeriaMaipoGrande
             txtID.Text = string.Empty;
             txtNombre.Text = string.Empty;
             txtPais.Text = string.Empty;
+            txtID.IsEnabled = true;
         }
     }
     }

@@ -36,32 +36,41 @@ namespace FeriaMaipoGrande
         {
             if (dgListaUsuarios.SelectedIndex == -1 || dgListaUsuarios.SelectedItem.ToString().Equals("{NewItemPlaceholder}"))
             {
-                string username, id, password, password2, email;
-                Usuario user = new Usuario();
-                id = txtID.Text;
-                username = txtUsername.Text;
-                password = passPassword.Password;
-                password2 = passPassword2.Password;
-                email = txtEmail.Text;
-                dynamic userrr = JObject.Parse(cbRol.SelectedItem.ToString());
-                string rol = userrr["id_rol"];
-                user.UserID = int.Parse(id);
-                user.Password = password;
-                user.Username = username;
-                user.Rol = int.Parse(rol);
-                user.Email = email;
-                JsonConvert.SerializeObject(user);
-                if(password != password2)
+                if (!String.IsNullOrEmpty(txtUsername.Text) && !String.IsNullOrEmpty(txtID.Text) && !String.IsNullOrEmpty(txtEmail.Text) &&
+                    !String.IsNullOrEmpty(passPassword.Password) && !String.IsNullOrEmpty(passPassword2.Password))
                 {
-                    MessageBox.Show("Las contraseñas deben coincidir");
+                    string username, id, password, password2, email;
+                    Usuario user = new Usuario();
+                    id = txtID.Text;
+                    username = txtUsername.Text;
+                    password = passPassword.Password;
+                    password2 = passPassword2.Password;
+                    email = txtEmail.Text;
+                    dynamic userrr = JObject.Parse(cbRol.SelectedItem.ToString());
+                    string rol = userrr["id_rol"];
+                    user.UserID = int.Parse(id);
+                    user.Password = password;
+                    user.Username = username;
+                    user.Rol = int.Parse(rol);
+                    user.Email = email;
+                    JsonConvert.SerializeObject(user);
+                    if (password != password2)
+                    {
+                        MessageBox.Show("Las contraseñas deben coincidir");
+                    }
+                    else
+                    {
+                        user.crearUsuario();
+                        MessageBox.Show("Se ha creado el usuario correctamente", "Tarea completada", MessageBoxButton.OK, MessageBoxImage.Information);
+                        LimpiarCampos();
+                        listarPersonas();
+                    }
                 }
                 else
                 {
-                    user.crearUsuario();
-                    MessageBox.Show("Usuario creado correctamente.");
-                    LimpiarCampos();
-                    listarPersonas();
+                    MessageBox.Show("Debe completar los campos para añadir un usuario", "Datos faltantes", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
+
                 listarUsuarios();
             }
             else
@@ -76,15 +85,20 @@ namespace FeriaMaipoGrande
         {
             if (dgListaUsuarios.SelectedIndex == -1 || dgListaUsuarios.SelectedItem.ToString().Equals("{NewItemPlaceholder}"))
             {
-                MessageBox.Show("No hay datos seleccionados, por favor seleccione.");
+                MessageBox.Show("No hay datos seleccionados, por favor seleccione.", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                dynamic usuario = JObject.Parse(dgListaUsuarios.SelectedItem.ToString());
-                string username = usuario["nombre_usuario"].ToString();
-                Usuario pers = new Usuario();
-                pers.eliminarUsuario(username);
-                MessageBox.Show("Persona eliminada correctamente.");
+                MessageBoxResult resultado = MessageBox.Show("Está seguro que desea eliminar a esta persona?", "Alerta", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (resultado == MessageBoxResult.Yes)
+                {
+                    dynamic usuario = JObject.Parse(dgListaUsuarios.SelectedItem.ToString());
+                    string username = usuario["nombre_usuario"].ToString();
+                    Usuario pers = new Usuario();
+                    pers.eliminarUsuario(username);
+                    MessageBox.Show("Persona eliminada correctamente.", "Registro modificado", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                
                 listarPersonas();
             }
             listarUsuarios();
@@ -94,7 +108,7 @@ namespace FeriaMaipoGrande
         {
             if (dgListaUsuarios.SelectedIndex == -1 || dgListaUsuarios.SelectedItem.ToString().Equals("{NewItemPlaceholder}"))
             {
-                MessageBox.Show("No hay datos seleccionados, por favor seleccione.");
+                MessageBox.Show("No hay datos seleccionados, por favor seleccione.", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
@@ -104,8 +118,8 @@ namespace FeriaMaipoGrande
                 passPassword.Password = user["password"].ToString();
                 passPassword2.Password = user["password"].ToString();
                 cbRol.SelectedItem = user["rol_usuario"];
-
-            }
+                txtUsername.IsEnabled = false;
+            } 
         }
 
         private void listarPersonas()
@@ -136,6 +150,7 @@ namespace FeriaMaipoGrande
             txtUsername.Text = string.Empty;
             passPassword.Password = string.Empty;
             passPassword2.Password = string.Empty;
+            txtUsername.IsEnabled = true;
         }
 
         private void cargarCombo()
@@ -151,8 +166,9 @@ namespace FeriaMaipoGrande
         {
             if (dgListaUsuarios.SelectedIndex == -1 || dgListaUsuarios.SelectedItem.ToString().Equals("{NewItemPlaceholder}"))
             {
-                MessageBox.Show("No hay datos seleccionados, por favor seleccione.");
-            } else 
+                MessageBox.Show("Seleccione una persona.", "Información", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            else 
             {
                 if(!String.IsNullOrEmpty(txtEmail.Text) && !String.IsNullOrEmpty(txtID.Text) && !String.IsNullOrEmpty(passPassword.Password) &&
                     !String.IsNullOrEmpty(passPassword2.Password))
@@ -180,7 +196,7 @@ namespace FeriaMaipoGrande
                         usuario.Rol = userRolID;
                         //---------------------------------------------------------------//
                         usuario.actualizarUsuario(username);
-                        MessageBox.Show("Usuario actualizado exitosamente", "Información", MessageBoxButton.OK);
+                        MessageBox.Show("Cliente actualizado exitosamente", "Información", MessageBoxButton.OK);
 
                     }
                     catch (Exception ex)
@@ -198,9 +214,16 @@ namespace FeriaMaipoGrande
 
         public int obtenerIdRol()
         {
-            dynamic userrr = JObject.Parse(cbRol.SelectedItem.ToString());
-            string rol = userrr["id_rol"];
-            return int.Parse(rol);
+            try
+            {
+                dynamic userrr = JObject.Parse(cbRol.SelectedItem.ToString());
+                string rol = userrr["id_rol"];
+                return int.Parse(rol);
+            }
+            catch(Exception ex)
+            {
+                return -1;
+            }
         }
     }
 }

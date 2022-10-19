@@ -43,5 +43,18 @@ namespace FeriaMaipoGrande
             Close();
         }
 
+        private void btnVentas_Click(object sender, RoutedEventArgs e)
+        {
+            MenuVentas MenuVentas = new MenuVentas();
+            MenuVentas.Show();
+            Close();
+        }
+
+        private void btnSubastas_Click(object sender, RoutedEventArgs e)
+        {
+            GestionSubasta subasta = new GestionSubasta();
+            subasta.Show();
+            Close();
+        }
     }
 }

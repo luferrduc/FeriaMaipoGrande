@@ -43,14 +43,14 @@
             <Label Content="Rol:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="53" Canvas.Top="169" RenderTransformOrigin="0.493,1.452"/>
             <Label x:Name="lblPersonaID" Content="Persona ID:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="15" Canvas.Top="26"/>
             <TextBox x:Name="txtID" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="38" Canvas.Left="89" Canvas.Top="30" RenderTransformOrigin="0.458,1.461"/>
-            <PasswordBox x:Name="passPassword" HorizontalAlignment="Center" Height="23" VerticalAlignment="Top" Width="121" Canvas.Left="89" Canvas.Top="115"/>
             <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" Canvas.Left="89" Canvas.Top="58"/>
+            <TextBox x:Name="txtUsername" Height="23" TextWrapping="Wrap" Width="120" Canvas.Left="89" Canvas.Top="87" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <PasswordBox x:Name="passPassword" HorizontalAlignment="Center" Height="23" VerticalAlignment="Top" Width="121" Canvas.Left="89" Canvas.Top="115"/>
+            <PasswordBox x:Name="passPassword2" HorizontalAlignment="Left" Height="23" VerticalAlignment="Center" Width="120" Canvas.Left="89" Canvas.Top="143"/>
+            <ComboBox x:Name="cbRol" Canvas.Left="89" Canvas.Top="171" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center" />
             <Label x:Name="lblEmail" Content="Email:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.188,0.727" Canvas.Left="42" Canvas.Top="58"/>
             <Label x:Name="lblPassword" Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.188,0.727" Canvas.Left="20" Canvas.Top="114"/>
-            <ComboBox x:Name="cbRol" Canvas.Left="89" Canvas.Top="171" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <PasswordBox x:Name="passPassword2" HorizontalAlignment="Left" Height="23" VerticalAlignment="Center" Width="120" Canvas.Left="89" Canvas.Top="143"/>
             <Label x:Name="lblPassword2" Content="RePassword:" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.188,0.727" Canvas.Left="15" Canvas.Top="140"/>
-            <TextBox x:Name="txtUsername" Height="23" TextWrapping="Wrap" Width="120" Canvas.Left="89" Canvas.Top="87" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label x:Name="lblEmail_Copy" Content="Username:" RenderTransformOrigin="0.188,0.727" Canvas.Left="20" Canvas.Top="87" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         </Canvas>
         <DataGrid x:Name="dgListaUsuarios" HorizontalAlignment="Left" Margin="22,181,0,0" Width="513" Height="150" VerticalAlignment="Top">
