@@ -25,8 +25,8 @@ namespace FeriaMaipoGrande
         public GestionSubasta()
         {
             InitializeComponent();
-            listarSubastas();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            listarSubastas();
         }
 
         private void listarSubastas()
@@ -49,7 +49,7 @@ namespace FeriaMaipoGrande
             if (dgListaVentas.SelectedIndex == -1 || dgListaVentas.SelectedItem.ToString().Equals("{NewItemPlaceholder}"))
             {
                 //validacion para que ni un campo esté vacío
-                if (!String.IsNullOrEmpty(txtID.Text) && !String.IsNullOrEmpty(txtGanador.Text) && !String.IsNullOrEmpty(txtCargo.Text) && !String.IsNullOrEmpty(dtTermino.Text)
+                if (!String.IsNullOrEmpty(txtID.Text) && !String.IsNullOrEmpty(txtCargo.Text) && !String.IsNullOrEmpty(dtTermino.Text)
                     && !String.IsNullOrEmpty(txtTotal.Text) && !String.IsNullOrEmpty(dtInicio.Text) && !String.IsNullOrEmpty(txtObservacion.Text))
                 {
                     Subasta subasta = new Subasta();
@@ -84,6 +84,11 @@ namespace FeriaMaipoGrande
                                     subasta.Total = result2;
                                     subasta.Estado = estado;
                                     subasta.Observaciones = observacion;
+
+                                    JsonConvert.SerializeObject(subasta);
+                                    subasta.crearSubasta();
+                                    listarSubastas();
+                                    MessageBox.Show("Se ha creado la subasta correctamente", "Tarea completada", MessageBoxButton.OK, MessageBoxImage.Information);
                                 }
                                 else
                                 {
@@ -100,10 +105,7 @@ namespace FeriaMaipoGrande
                             MessageBox.Show("El cargo debe ser numerico", "Datos incorrectos", MessageBoxButton.OK, MessageBoxImage.Information);
                         }
                         //Se serializan y luego se invoca el metodo crear subasta.
-                        JsonConvert.SerializeObject(subasta);
-                        subasta.crearSubasta();
-                        listarSubastas();
-                        MessageBox.Show("Se ha creado la subasta correctamente", "Tarea completada", MessageBoxButton.OK, MessageBoxImage.Information);
+                        
                     }
                     else
                     {

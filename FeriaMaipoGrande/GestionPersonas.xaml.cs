@@ -28,7 +28,6 @@ namespace FeriaMaipoGrande
             InitializeComponent();
             listarPersonas();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            
         }
 
        
@@ -45,7 +44,6 @@ namespace FeriaMaipoGrande
             Persona persona = new Persona();
             dynamic listaPersonas = persona.listarPersonas();
             dgListaPersonas.ItemsSource = listaPersonas;
-
         }
 
         
@@ -88,7 +86,6 @@ namespace FeriaMaipoGrande
             else{
                 ModificarPersona();
             }
-            LimpiarCampos();
             listarPersonas();
         }
 
@@ -150,7 +147,7 @@ namespace FeriaMaipoGrande
                         persona.Direccion = direccion;
                         JsonConvert.SerializeObject(persona);
                         persona.actualizarPersona(numID);
-                        MessageBox.Show("Cliente actualizado exitosamente", "Información", MessageBoxButton.OK);
+                        MessageBox.Show("Cliente actualizado exitosamente", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
                     }catch (Exception ex){
                         MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK);
                     }

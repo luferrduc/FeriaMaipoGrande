@@ -16,7 +16,7 @@ namespace FeriaMaipoGrande.Negocio
 
         public Venta(int id, int total, int id_user, int id_tipo_venta, string fecha, string estado, string descripcion)
         {
-            Id = id;
+            //Id = id;
             Total = total;
             Id_user = id_user;
             Id_tipo_venta = id_tipo_venta;
@@ -29,7 +29,7 @@ namespace FeriaMaipoGrande.Negocio
         {
         }
 
-        public int Id { get => id; set => id = value; }
+        //public int Id { get => id; set => id = value; }
 
         public int Total { get => total; set => total = value; }
 
@@ -66,9 +66,9 @@ namespace FeriaMaipoGrande.Negocio
             venta.Total = Total;
             venta.Fecha = Fecha;
             venta.Id_user = Id_user;
-            venta.Id = Id;
+            //venta.Id = Id;
 
-            venta.crearVentaDAO("ventas", venta);
+            venta.crearVentaDAO(venta);
         }
 
         public void eliminarVenta(string id_venta)
@@ -86,9 +86,22 @@ namespace FeriaMaipoGrande.Negocio
             venta.Total = Total;
             venta.Fecha = Fecha;
             venta.Id_user = Id_user;
-            venta.Id = Id;
+            //venta.Id = Id;
 
             venta.actualizarVentaDAO(id_venta, venta);
+        }
+
+        public string setFechasDateTime(string fecha)
+        {
+            string mm, dd, yyyy, formato_fecha;
+            //Se separa el formato de la fecha y luego se muestra
+            //el formato el cual acepta la base de datos: YYYY/DD/MM
+            mm = fecha.Substring(0, 2);
+            dd = fecha.Substring(3, 2);
+            yyyy = fecha.Substring(6, 4);
+
+            formato_fecha = string.Concat(yyyy, "-", mm, "-", dd);
+            return formato_fecha;
         }
 
     }

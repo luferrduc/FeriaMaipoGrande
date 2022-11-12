@@ -34,6 +34,8 @@ namespace FeriaMaipoGrande.Datos
             return data;
         }
 
+
+
        public async Task<HttpStatusCode> DeletePersonaAsync(string path, string numIdentificador)
         {
             HttpClient client = new HttpClient();
@@ -44,7 +46,7 @@ namespace FeriaMaipoGrande.Datos
         public async Task<Uri> CrearPersonaAsync(string path, PersonaDAO persona)
         {
             HttpClient client = new HttpClient();
-            var response = await client.PostAsJsonAsync(string.Concat(url,path), persona);
+            var response = await client.PostAsJsonAsync(string.Concat(url, path), persona);
             response.EnsureSuccessStatusCode();
             // return URI of the created resource.
             return response.Headers.Location;
@@ -58,6 +60,7 @@ namespace FeriaMaipoGrande.Datos
 
             return response.Headers.Location;
         }
+
         /* 
          * 
          * 
@@ -223,6 +226,60 @@ namespace FeriaMaipoGrande.Datos
             }
             
         }
+
+        /* 
+         * 
+         * 
+         * METODOS PARA EL MANTENEDOR DE CONTRATOS
+         * 
+         * 
+         */
+
+        public async Task<Uri> CrearContratoAsync(string path, ContratoDAO contratos)
+        {
+            HttpClient client = new HttpClient();
+            var response = await client.PostAsJsonAsync(string.Concat(url, path), contratos);
+            response.EnsureSuccessStatusCode();
+            // return URI of the created resource.
+            return response.Headers.Location;
+        }
+
+        public async Task<Uri> ActualizarContratoAsync(string path, string id_contratos, ContratoDAO contratos)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.PutAsJsonAsync(string.Concat(url, path, int.Parse(id_contratos)), contratos);
+            response.EnsureSuccessStatusCode();
+
+            return response.Headers.Location;
+        }
+
+        public dynamic GetContratos()
+        {
+            HttpWebRequest myWebRequest = (HttpWebRequest)WebRequest.Create(string.Concat(url, "contratos"));
+            myWebRequest.UserAgent = " Mozilla / 5.0 ( Windows NT 6.1 ; WOW64 ; rv : 23.0 ) Gecko / 20100101 Firefox / 23.0 ";
+            //myWebRequest.CookieContainer = myCookie ;
+            myWebRequest.Credentials = CredentialCache.DefaultCredentials;
+            myWebRequest.Proxy = null;
+            try
+            {
+                HttpWebResponse myHttpWebResponse = (HttpWebResponse)myWebRequest.GetResponse();
+                Stream myStream = myHttpWebResponse.GetResponseStream();
+                StreamReader myStreamReader = new StreamReader(myStream);
+                // Leemos los datos
+                string Datos = HttpUtility.HtmlDecode(myStreamReader.ReadToEnd());
+                dynamic data = JsonConvert.DeserializeObject(Datos);
+                return data;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+
+        }
+
+
+
+
 
     }
 }

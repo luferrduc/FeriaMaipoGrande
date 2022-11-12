@@ -33,28 +33,35 @@ namespace FeriaMaipoGrande
         {
             GestionPersonas gestionP = new GestionPersonas();
             gestionP.Show();
-            Close();
+            this.Close();
         }
 
         private void btnUsuarios_Click(object sender, RoutedEventArgs e)
         {
             GestionUsuarios gestionU = new GestionUsuarios();
             gestionU.Show();
-            Close();
+            this.Close();
         }
 
         private void btnVentas_Click(object sender, RoutedEventArgs e)
         {
-            MenuVentas MenuVentas = new MenuVentas();
-            MenuVentas.Show();
-            Close();
+            GestionVenta gestionV = new GestionVenta();
+            gestionV.Show();
+            this.Close();
         }
 
         private void btnSubastas_Click(object sender, RoutedEventArgs e)
         {
             GestionSubasta subasta = new GestionSubasta();
             subasta.Show();
-            Close();
+            this.Close();
+        }
+
+        private void btnContratos_Click(object sender, RoutedEventArgs e)
+        {
+            GestionContratos contratos = new GestionContratos();   
+            contratos.Show();
+            this.Close();
         }
     }
 }

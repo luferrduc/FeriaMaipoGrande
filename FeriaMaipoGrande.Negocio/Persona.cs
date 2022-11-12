@@ -60,7 +60,7 @@ namespace FeriaMaipoGrande.Negocio
             personaDAO.eliminarPersonaDAO(numIdentificador);
         }
 
-        public void crearPersona()
+        public bool crearPersona()
         {
             PersonaDAO personaDAO = new PersonaDAO();
 
@@ -72,6 +72,7 @@ namespace FeriaMaipoGrande.Negocio
             personaDAO.Ciudad = Ciudad;
             personaDAO.Direccion = Direccion;
             personaDAO.crearPersonaDAO("persona", personaDAO);
+            return true;
         }
 
         public void actualizarPersona(string numIdentificador)

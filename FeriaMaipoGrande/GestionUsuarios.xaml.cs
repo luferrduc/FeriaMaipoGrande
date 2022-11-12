@@ -115,8 +115,6 @@ namespace FeriaMaipoGrande
                 dynamic user = JObject.Parse(dgListaUsuarios.SelectedItem.ToString());
                 txtEmail.Text = user["email"].ToString();
                 txtUsername.Text = user["nombre_usuario"].ToString();
-                passPassword.Password = user["password"].ToString();
-                passPassword2.Password = user["password"].ToString();
                 cbRol.SelectedItem = user["rol_usuario"];
                 txtUsername.IsEnabled = false;
             } 

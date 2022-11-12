@@ -15,7 +15,7 @@ namespace FeriaMaipoGrande.Datos
 
         public VentaDAO(int id, int total, int id_user, int id_tipo_venta, string fecha, string estado, string descripcion)
         {
-            Id = id;
+            //Id = id;
             Total = total;
             Id_user = id_user;
             Id_tipo_venta = id_tipo_venta;
@@ -27,20 +27,18 @@ namespace FeriaMaipoGrande.Datos
         public VentaDAO()
         {
         }
-        [JsonProperty("id_venta")]
-        public int Id { get => id; set => id = value; }
+        [JsonProperty("descripcion")]
+        public string Descripcion { get => descripcion; set => descripcion = value; }
         [JsonProperty("total_venta")]
         public int Total { get => total; set => total = value; }
-        [JsonProperty("id_usuario")]
-        public int Id_user { get => id_user; set => id_user = value; }
         [JsonProperty("id_tipo_venta")]
         public int Id_tipo_venta { get => id_tipo_venta; set => id_tipo_venta = value; }
+        [JsonProperty("id_usuario")]
+        public int Id_user { get => id_user; set => id_user = value; }
         [JsonProperty("fecha_venta")]
         public string Fecha { get => fecha; set => fecha = value; }
         [JsonProperty("estado")]
         public string Estado { get => estado; set => estado = value; }
-        [JsonProperty("descripcion")]
-        public string Descripcion { get => descripcion; set => descripcion = value; }
 
         public dynamic listarVentaDAO()
         {
@@ -51,17 +49,17 @@ namespace FeriaMaipoGrande.Datos
 
         public async void eliminarVentaDAO(string id_venta)
         {
-            await dbapi.DeleteVentaAsync("venta/", id_venta);
+            await dbapi.DeleteVentaAsync("ventas/", id_venta);
         }
 
-        public async void crearVentaDAO(string path, VentaDAO venta)
+        public async void crearVentaDAO(VentaDAO venta)
         {
-            await dbapi.CrearVentaAsync("venta", venta);
+            await dbapi.CrearVentaAsync("ventas/", venta);
         }
 
         public async void actualizarVentaDAO(string id_venta, VentaDAO venta)
         {
-            await dbapi.ActualizarVentaAsync("venta/", id_venta, venta);
+            await dbapi.ActualizarVentaAsync("ventas/", id_venta, venta);
         }
 
 
