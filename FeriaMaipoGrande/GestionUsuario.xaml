@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="FeriaMaipoGrande.GestionUsuario"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FeriaMaipoGrande"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <DataGrid x:Name="dgListaPersonas" HorizontalAlignment="Left" Margin="20,50,0,0" Width="513" Height="109" VerticalAlignment="Top">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btnEliminar" HorizontalAlignment="Right" Margin="0,348,297,0" Width="137" Height="35" VerticalAlignment="Top" Click="btnEliminar_Click">
+            <Canvas Height="35" Width="124">
+                <Image Source="Imagenes/Garbage.png" Height="25" Width="49" Canvas.Top="4" Canvas.Left="5"/>
+                <Label Content="Eliminar" Canvas.Left="59" Height="25" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Canvas.Top="4"/>
+            </Canvas>
+        </Button>
+        <Button x:Name="btnCargaDatos" HorizontalAlignment="Right" Margin="0,348,665,0" Width="138" Height="35" VerticalAlignment="Top" Click="btnCargaDatos_Click">
+            <Canvas Height="35" Width="123">
+                <Image Source="Imagenes/Upload.png" Height="25" Width="49" Canvas.Top="4" Canvas.Left="-1"/>
+                <Label Content="Cargar Datos" Canvas.Left="38" Height="31" Width="85" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Canvas.Top="4"/>
+            </Canvas>
+        </Button>
+        <Label Content="Listado de personas registradas" HorizontalAlignment="Left" Margin="20,23,0,0" VerticalAlignment="Top" Width="178"/>
+        <Canvas Margin="0,51,10,86" HorizontalAlignment="Right" Width="235">
+            <Button x:Name="btnAgregar" HorizontalAlignment="Right" VerticalAlignment="Top" Width="121" Canvas.Left="89" Canvas.Top="200" Click="btnAgregar_Click" Height="35">
+                <Canvas Height="35" Width="111">
+                    <Label Content="Guardar" Canvas.Left="49" Height="25" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Canvas.Top="5"/>
+                    <Image Source="Imagenes/Save.png" Height="25" Width="49" Canvas.Top="5"/>
+                </Canvas>
+            </Button>
+            <Label Content="Rol:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="53" Canvas.Top="169" RenderTransformOrigin="0.493,1.452"/>
+            <Label x:Name="lblPersonaID" Content="Persona ID:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="15" Canvas.Top="26"/>
+            <TextBox x:Name="txtID" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="38" Canvas.Left="89" Canvas.Top="30" RenderTransformOrigin="0.458,1.461"/>
+            <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" Canvas.Left="89" Canvas.Top="58"/>
+            <TextBox x:Name="txtUsername" Height="23" TextWrapping="Wrap" Width="120" Canvas.Left="89" Canvas.Top="87" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <PasswordBox x:Name="passPassword" HorizontalAlignment="Center" Height="23" VerticalAlignment="Top" Width="121" Canvas.Left="89" Canvas.Top="115"/>
+            <PasswordBox x:Name="passPassword2" HorizontalAlignment="Left" Height="23" VerticalAlignment="Center" Width="120" Canvas.Left="89" Canvas.Top="143"/>
+            <ComboBox x:Name="cbRol" Canvas.Left="89" Canvas.Top="171" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Label x:Name="lblEmail" Content="Email:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.188,0.727" Canvas.Left="42" Canvas.Top="58"/>
+            <Label x:Name="lblPassword" Content="Password:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.188,0.727" Canvas.Left="20" Canvas.Top="114"/>
+            <Label x:Name="lblPassword2" Content="RePassword:" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.188,0.727" Canvas.Left="15" Canvas.Top="140"/>
+            <Label x:Name="lblEmail_Copy" Content="Username:" RenderTransformOrigin="0.188,0.727" Canvas.Left="20" Canvas.Top="87" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        </Canvas>
+        <DataGrid x:Name="dgListaUsuarios" HorizontalAlignment="Left" Margin="22,181,0,0" Width="513" Height="150" VerticalAlignment="Top">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Listado de personas registradas" HorizontalAlignment="Left" Margin="20,23,0,0" VerticalAlignment="Top" Width="178"/>
+                
+    </Grid>
+</UserControl>
