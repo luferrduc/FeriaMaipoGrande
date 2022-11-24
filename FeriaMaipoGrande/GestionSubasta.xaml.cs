@@ -116,13 +116,14 @@ namespace FeriaMaipoGrande
                 {
                     MessageBox.Show("Debe completar los campos para añadir una subasta", "Datos faltantes", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                listarSubastas();
             }
             else
             {
                 ModificarSubasta();
                 LimpiarCampos();
+                listarSubastas();
             }
+            listarSubastas();
         }
 
         private void btnTerminarProceso_Click(object sender, RoutedEventArgs e)
@@ -163,7 +164,6 @@ namespace FeriaMaipoGrande
                     subasta.actualizarSubasta(id_subasta);
                     MessageBox.Show("Subasta finalizada correctamente.", "Registro modificado", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                listarSubastas();
             }
             listarSubastas();
         }
@@ -172,12 +172,12 @@ namespace FeriaMaipoGrande
         {
             string mm, dd, yyyy, formato_fecha;
             //Se separa el formato de la fecha y luego se muestra
-            //el formato el cual acepta la base de datos: YYYY/DD/MM
-            mm = fecha.Substring(0, 2);
-            dd = fecha.Substring(3, 2);
+            //el formato el cual acepta la base de datos: YYYY/MM/DD
+            dd = fecha.Substring(0, 2);
+            mm = fecha.Substring(3, 2);
             yyyy = fecha.Substring(6, 4);
 
-            formato_fecha = string.Concat(yyyy, "-", dd, "-", mm);
+            formato_fecha = string.Concat(yyyy, "-", mm, "-", dd);
             return formato_fecha;
         }
 
@@ -244,6 +244,11 @@ namespace FeriaMaipoGrande
                                         subasta.Estado = estado;
                                         subasta.Ganador = ganador;
                                         subasta.Observaciones = observacion;
+                                        //Se serializan y luego se invoca el metodo crear subasta.
+                                        JsonConvert.SerializeObject(subasta);
+                                        subasta.actualizarSubasta(id_subasta);
+                                        
+                                        MessageBox.Show("Se ha actualizado la subasta correctamente", "Tarea completada", MessageBoxButton.OK, MessageBoxImage.Information);
                                     }
                                     else
                                     {
@@ -259,11 +264,6 @@ namespace FeriaMaipoGrande
                             {
                                 MessageBox.Show("El cargo debe ser numerico", "Datos incorrectos", MessageBoxButton.OK, MessageBoxImage.Information);
                             }
-                            //Se serializan y luego se invoca el metodo crear subasta.
-                            JsonConvert.SerializeObject(subasta);
-                            subasta.actualizarSubasta(id_subasta);
-                            listarSubastas();
-                            MessageBox.Show("Se ha actualizado la subasta correctamente", "Tarea completada", MessageBoxButton.OK, MessageBoxImage.Information);
                         }
                     }
                     catch(Exception ex)
@@ -275,7 +275,6 @@ namespace FeriaMaipoGrande
                 {
                     MessageBox.Show("Debe completar los campos para añadir una subasta", "Datos faltantes", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                listarSubastas();
             }
         }
 

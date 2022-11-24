@@ -45,7 +45,7 @@ namespace FeriaMaipoGrande
 
         private void btnVentas_Click(object sender, RoutedEventArgs e)
         {
-            GestionVenta gestionV = new GestionVenta();
+            InicioSesion gestionV = new InicioSesion();
             gestionV.Show();
             this.Close();
         }

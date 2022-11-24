@@ -43,7 +43,14 @@ namespace FeriaMaipoGrande
         {
             Persona persona = new Persona();
             dynamic listaPersonas = persona.listarPersonas();
-            dgListaPersonas.ItemsSource = listaPersonas;
+            try
+            {
+                dgListaPersonas.ItemsSource = listaPersonas;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("No se ha podido establecer una conexión con el servidor.", "Error de conexión al servidor.", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         
@@ -76,12 +83,12 @@ namespace FeriaMaipoGrande
                     JsonConvert.SerializeObject(persona);
                     persona.crearPersona();
                     MessageBox.Show("Se ha creado la persona correctamente", "Tarea completada", MessageBoxButton.OK, MessageBoxImage.Information);
+                    listarPersonas();
                 }
                 else
                 {
                     MessageBox.Show("Debe completar los campos para añadir una persona", "Datos faltantes", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                
             }
             else{
                 ModificarPersona();
@@ -105,9 +112,7 @@ namespace FeriaMaipoGrande
                     Persona pers = new Persona();
                     pers.eliminarPersona(numID);
                     MessageBox.Show("Persona eliminada correctamente.", "Registro modificado", MessageBoxButton.OK, MessageBoxImage.Information);
-                    listarPersonas();
                 }
-
             }
             listarPersonas();
         }

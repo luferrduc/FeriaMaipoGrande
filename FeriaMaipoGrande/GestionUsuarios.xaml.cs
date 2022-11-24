@@ -27,9 +27,7 @@ namespace FeriaMaipoGrande
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            listarPersonas();
-            listarUsuarios();
-            cargarCombo();
+            CargaInicial();
         }
 
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
@@ -63,19 +61,18 @@ namespace FeriaMaipoGrande
                         user.crearUsuario();
                         MessageBox.Show("Se ha creado el usuario correctamente", "Tarea completada", MessageBoxButton.OK, MessageBoxImage.Information);
                         LimpiarCampos();
-                        listarPersonas();
                     }
+                    listarUsuarios();
                 }
                 else
                 {
                     MessageBox.Show("Debe completar los campos para añadir un usuario", "Datos faltantes", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-
-                listarUsuarios();
             }
             else
             {
                 ModificarUsuario();
+                listarUsuarios();
                 LimpiarCampos();
             }
             
@@ -97,9 +94,8 @@ namespace FeriaMaipoGrande
                     Usuario pers = new Usuario();
                     pers.eliminarUsuario(username);
                     MessageBox.Show("Persona eliminada correctamente.", "Registro modificado", MessageBoxButton.OK, MessageBoxImage.Information);
+
                 }
-                
-                listarPersonas();
             }
             listarUsuarios();
         }
@@ -124,14 +120,28 @@ namespace FeriaMaipoGrande
         {
             Persona persona = new Persona();
             dynamic listaPersonas = persona.listarPersonas();
-            dgListaPersonas.ItemsSource = listaPersonas;
+            try
+            {
+                dgListaPersonas.ItemsSource = listaPersonas;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("No se ha podido establecer una conexión con el servidor.", "Error de conexión al servidor.", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void listarUsuarios()
         {
             Usuario user = new Usuario();
-            dynamic listaPersonas = user.listarUsuarios();
-            dgListaUsuarios.ItemsSource = listaPersonas;
+            dynamic listaUsuarios = user.listarUsuarios();
+            try
+            {
+                dgListaUsuarios.ItemsSource = listaUsuarios;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("No se ha podido establecer una conexión con el servidor.", "Error de conexión al servidor.", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void btnRegresar_Click(object sender, RoutedEventArgs e)
@@ -139,6 +149,25 @@ namespace FeriaMaipoGrande
             MainWindow main = new MainWindow();
             main.Show();
             Close();
+        }
+
+        private void CargaInicial()
+        {
+            Usuario user = new Usuario();
+            dynamic listaUsuarios = user.listarUsuarios();
+            Persona persona = new Persona();
+            dynamic listaPersonas = persona.listarPersonas();
+            dynamic lista = user.listarRoles();
+            try
+            {
+                dgListaUsuarios.ItemsSource = listaUsuarios;
+                dgListaPersonas.ItemsSource = listaPersonas;
+                cbRol.ItemsSource = lista;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("No se ha podido establecer una conexión con el servidor.", "Error de conexión al servidor.", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void LimpiarCampos()
@@ -155,7 +184,15 @@ namespace FeriaMaipoGrande
         {
             Usuario user = new Usuario();
             dynamic lista = user.listarRoles();
-            cbRol.ItemsSource = lista;
+            try
+            {
+                cbRol.ItemsSource = lista;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("No se ha podido establecer una conexión con el servidor.", "Error de conexión al servidor.", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
             cbRol.DisplayMemberPath = "descripcion";
             cbRol.SelectedValuePath = "id_rol";
         }
@@ -194,7 +231,7 @@ namespace FeriaMaipoGrande
                         usuario.Rol = userRolID;
                         //---------------------------------------------------------------//
                         usuario.actualizarUsuario(username);
-                        MessageBox.Show("Cliente actualizado exitosamente", "Información", MessageBoxButton.OK);
+                        MessageBox.Show("Cliente actualizado exitosamente", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     }
                     catch (Exception ex)
@@ -207,7 +244,7 @@ namespace FeriaMaipoGrande
                     MessageBox.Show("Existen campos sin rellenar", "Error al modificar", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-            listarUsuarios();
+            
         }
 
         public int obtenerIdRol()

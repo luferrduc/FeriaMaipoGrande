@@ -72,8 +72,8 @@ namespace FeriaMaipoGrande
                             venta.Id_user = idSalida;
                             venta.Total = 0;
                             venta.crearVenta();
+                            
                             MessageBox.Show("Venta creada con exito!", "Tarea completada", MessageBoxButton.OK, MessageBoxImage.Information);
-                            listarVentas();
                         }
                         else
                         {
@@ -95,11 +95,8 @@ namespace FeriaMaipoGrande
             else
             {
                 ModificarVenta();
-                listarVentas();
-                listarUsuarios();
             }
             LimpiarCampos();
-            listarUsuarios();
             listarVentas();
         }
 
@@ -149,11 +146,8 @@ namespace FeriaMaipoGrande
                                 string fecha = ventasLista["fecha_venta"];
                                 venta.Fecha = setFechasDateTimeModificar(fecha);
                                 venta.Total = ventasLista["total_venta"];
-
                                 JsonConvert.SerializeObject(venta);
                                 venta.actualizarVenta(id_subasta);
-                                listarUsuarios();
-                                listarVentas();
                                 MessageBox.Show("Se ha actualizado la venta correctamente", "Tarea completada", MessageBoxButton.OK, MessageBoxImage.Information);
                             }
                             else
@@ -185,14 +179,28 @@ namespace FeriaMaipoGrande
         {
             Usuario user = new Usuario();
             dynamic usuarios = user.listarUsuarios();
-            dgListaUsuarios.ItemsSource = usuarios;
+            try
+            {
+                dgListaUsuarios.ItemsSource = usuarios;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("No se ha podido establecer una conexión con el servidor.", "Error de conexión al servidor.", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void listarVentas()
         {
             Venta venta = new Venta();
             dynamic lista = venta.listarVentas();
-            dgListaVentas.ItemsSource = lista;
+            try
+            {
+                dgListaVentas.ItemsSource = lista;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("No se ha podido establecer una conexión con el servidor.", "Error de conexión al servidor.", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void LimpiarCampos()
@@ -271,9 +279,7 @@ namespace FeriaMaipoGrande
                     venta.Id_user = int.Parse(id_usuario);
 
                     venta.actualizarVenta(id_venta);
-
                     MessageBox.Show("venta finalizada correctamente.", "Registro modificado", MessageBoxButton.OK, MessageBoxImage.Information);
-                    listarVentas();
                 }
             }
             listarVentas();

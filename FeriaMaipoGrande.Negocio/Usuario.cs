@@ -42,6 +42,13 @@ namespace FeriaMaipoGrande.Negocio
             return listaUsuarios;
         }
 
+        public dynamic listarUsuario(string path)
+        {
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            dynamic listaUsuarios = usuarioDAO.listarSoloUsuarioDAO(path);
+            return listaUsuarios;
+        }
+
         public void eliminarUsuario(string username)
         {
             UsuarioDAO usuarioDAO = new UsuarioDAO();

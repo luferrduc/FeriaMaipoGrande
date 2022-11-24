@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using FeriaMaipoGrande.Datos;
 
 namespace FeriaMaipoGrande.Negocio
@@ -87,13 +88,12 @@ namespace FeriaMaipoGrande.Negocio
 
         public string getFechas(string fecha)
         {
-
             string dd, mm, yyyy, formato_fecha;
 
             //Se separa el formato de la fecha, y luego se muestra
             //el formato local: DD/MM/YYYY
-            mm = fecha.Substring(0, 2);
-            dd = fecha.Substring(3, 3);
+            dd = fecha.Substring(0, 2);
+            mm = fecha.Substring(3, 3);
             yyyy = fecha.Substring(5, 5);
 
             formato_fecha = string.Concat(dd, mm, yyyy);
