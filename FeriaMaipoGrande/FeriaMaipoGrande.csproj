@@ -118,13 +118,13 @@
     <Compile Include="GestionContrato.xaml.cs">
       <DependentUpon>GestionContrato.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GestionContratos.xaml.cs">
+    <Compile Include="VistasWPF\GestionContratos.xaml.cs">
       <DependentUpon>GestionContratos.xaml</DependentUpon>
     </Compile>
     <Compile Include="GestionPersona.xaml.cs">
       <DependentUpon>GestionPersona.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GestionSubasta.xaml.cs">
+    <Compile Include="VistasWPF\GestionSubasta.xaml.cs">
       <DependentUpon>GestionSubasta.xaml</DependentUpon>
     </Compile>
     <Compile Include="GestionSubastas.xaml.cs">
@@ -133,7 +133,7 @@
     <Compile Include="GestionUsuario.xaml.cs">
       <DependentUpon>GestionUsuario.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GestionVenta.xaml.cs">
+    <Compile Include="VistasWPF\GestionVenta.xaml.cs">
       <DependentUpon>GestionVenta.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ModeloVistaContratos.cs" />
@@ -154,7 +154,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GestionContratos.xaml">
+    <Page Include="VistasWPF\GestionContratos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,11 +162,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GestionPersonas.xaml">
+    <Page Include="VistasWPF\GestionPersonas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GestionSubasta.xaml">
+    <Page Include="VistasWPF\GestionSubasta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -178,11 +178,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GestionUsuarios.xaml">
+    <Page Include="VistasWPF\GestionUsuarios.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GestionVenta.xaml">
+    <Page Include="VistasWPF\GestionVenta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -198,10 +198,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GestionPersonas.xaml.cs">
+    <Compile Include="VistasWPF\GestionPersonas.xaml.cs">
       <DependentUpon>GestionPersonas.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GestionUsuarios.xaml.cs">
+    <Compile Include="VistasWPF\GestionUsuarios.xaml.cs">
       <DependentUpon>GestionUsuarios.xaml</DependentUpon>
     </Compile>
     <Compile Include="InicioSesion.xaml.cs">
@@ -293,7 +293,12 @@
     <Resource Include="Imagenes\Text-Edit.png" />
     <Resource Include="Imagenes\Upload.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Imagenes\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\logo2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

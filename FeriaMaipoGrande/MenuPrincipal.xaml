@@ -41,8 +41,8 @@
         <Border.BorderBrush>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="{StaticResource winBorderColor1}" Offset="0"/>
-                <GradientStop Color="{StaticResource winBorderColor2}" Offset="0"/>
-                <GradientStop Color="{StaticResource winBorderColor3}" Offset="0"/>
+                <GradientStop Color="{StaticResource winBorderColor2}" Offset="1"/>
+                <GradientStop Color="{StaticResource winBorderColor3}" Offset="2"/>
             </LinearGradientBrush>
         </Border.BorderBrush>
 
@@ -68,21 +68,21 @@
 
             <!-- Logo -->
             <StackPanel Orientation="Horizontal"
-                        Height="55"
+                        Height="200"
                         Margin="15,25,0,40" VerticalAlignment="Top">
-                <Image Source="/Imagenes/Logo-social.png" Height="50" Width="110"/>
-                <TextBlock Text="Feria Maipo" Foreground="{StaticResource titleColor2}"
+                <Image Source="/Imagenes/Logo2.png" Height="200" Width="200"/>
+                <TextBlock Text="" Foreground="{StaticResource titleColor2}"
                            FontSize="20"
                            FontFamily="Montserrat"
                            FontWeight="Medium"
                            VerticalAlignment="Center"
                            Margin="10,0,0,0"/>
             </StackPanel>
-            
+
             <!-- Botones del menu-->
 
             <RadioButton Style="{StaticResource menuButton}"
-                         Tag="{StaticResource color1}" Margin="10,85,0,563"
+                         Tag="{StaticResource color1}" Margin="10,395,0,253"
                          Command="{Binding ExecuteMostrarVistaPersonasComandos}">
                 <StackPanel Orientation="Horizontal">
                     <fa:IconImage Icon="IdCard" Style="{StaticResource menuButtonIcon}"/>
@@ -91,16 +91,16 @@
             </RadioButton>
 
             <RadioButton Style="{StaticResource menuButton}"
-                         Tag="{StaticResource color1}" Margin="10,140,0,508"
-                         Command="{Binding ExecuteMostrarVistaUsusariosComandos}">
+                         Tag="{StaticResource color1}" Margin="10,230,0,418"
+                         Command="{Binding ExecuteMostrarVistaUsuariosComandos}">
                 <StackPanel Orientation="Horizontal">
                     <fa:IconImage Icon="user" Style="{StaticResource menuButtonIcon}"/>
                     <TextBlock Text="Gestión de usuarios"/>
                 </StackPanel>
             </RadioButton>
-            
+
             <RadioButton Style="{StaticResource menuButton}"
-                Tag="{StaticResource color1}" Margin="10,195,0,453"
+                Tag="{StaticResource color1}" Margin="10,285,0,363"
                 Command="{Binding ExecuteMostrarVistaSubastasComandos}">
                 <StackPanel Orientation="Horizontal">
                     <fa:IconImage Icon="Briefcase" Style="{StaticResource menuButtonIcon}"/>
@@ -109,7 +109,7 @@
             </RadioButton>
 
             <RadioButton Style="{StaticResource menuButton}"
-                         Tag="{StaticResource color1}" Margin="10,250,0,398"
+                         Tag="{StaticResource color1}" Margin="10,340,0,308"
                          Command="{Binding ExecuteMostrarVistaContratosComandos}">
                 <StackPanel Orientation="Horizontal">
                     <fa:IconImage Icon="FileContract" Style="{StaticResource menuButtonIcon}"/>
@@ -144,10 +144,9 @@
                                 Grid.Row="0"
                                 Orientation="Horizontal"
                                 FlowDirection="RightToLeft"
-                                Background="Transparent"
                                 Margin="0,0,5,0"
                                 MouseLeftButtonDown="pnlControlBar_MouseLeftButtonDown">
-                        
+
                         <Button x:Name="btnCerrar"
                                 Style="{StaticResource controlButton}"
                                 Tag="{StaticResource color4}"
@@ -176,26 +175,26 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                            <!-- titulo de donde estoy -->
+                        <!-- titulo de donde estoy -->
                         <StackPanel Grid.Column="0"
                                     Orientation="Horizontal"
                                     VerticalAlignment="Center">
 
                             <fa:IconImage Icon="{Binding Icon}"
-                                          Height="20"
-                                          Width="20"
-                                          Foreground="{StaticResource titleColor2}"
+                                          Height="30"
+                                          Width="30"
+                                          Foreground="#000000"
                                           Margin="35,0,10,0"/>
 
                             <TextBlock Text="{Binding Caption}"
                                        Foreground="{StaticResource titleColor2}"
-                                       FontSize="16"
+                                       FontSize="20"
                                        FontFamily="Montserrat"
                                        FontWeight="Medium"
                                        VerticalAlignment="Center"/>
 
                         </StackPanel>
-                        
+
                         <!-- Datos del usuario-->
 
                         <StackPanel Grid.Column="1"
@@ -210,7 +209,7 @@
                             </Button>
 
                             <TextBlock Text="Username"
-                                       Foreground="{StaticResource titleColor3}"
+                                       Foreground="{StaticResource titleColor2}"
                                        FontFamily="Montserrat"
                                        FontSize="12"
                                        VerticalAlignment="Center"></TextBlock>
@@ -224,23 +223,23 @@
                                     <ImageBrush ImageSource="/Imagenes/client.png"/>
                                 </Ellipse.Fill>
                             </Ellipse>
-                            
+
                         </StackPanel>
                     </Grid>
 
                     <!-- Contenido -->
                     <ContentControl Content="{Binding CurrentChildView}"
                                     Grid.Row="2"
-                                    Margin="25"/>
+                                    Margin="25,25,25,25"/>
 
                 </Grid>
-                
-                
-                
-                
-                
+
+
+
+
+
             </Border>
-            
+
 
 
 

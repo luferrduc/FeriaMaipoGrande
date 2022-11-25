@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FeriaMaipoGrande"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="900">
     <Grid>
-        <DataGrid  x:Name="dgListaVentas" HorizontalAlignment="Left" Margin="20,50,0,0" Width="513" Height="280" VerticalAlignment="Top">
+        <DataGrid  x:Name="dgListaVentas" HorizontalAlignment="Left" Margin="22,51,0,0" Width="638" Height="414" VerticalAlignment="Top">
             <DataGrid.Columns>
                 <DataGridTextColumn/>
             </DataGrid.Columns>
@@ -21,7 +21,7 @@
             <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" Canvas.Left="88" Canvas.Top="166" RenderTransformOrigin="1.096,0.709"/>
             <TextBox x:Name="txtEstado" Height="23" TextWrapping="Wrap" Width="121" Canvas.Left="88" Canvas.Top="194" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <TextBox x:Name="txtObservacion" Height="95" TextWrapping="Wrap" Width="121" Canvas.Left="88" Canvas.Top="223" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Button x:Name="btnPublicar" Canvas.Left="23" Canvas.Top="323" HorizontalAlignment="Center" VerticalAlignment="Top" Width="186" Height="40" Click="btnPublicar_Click">
+            <Button x:Name="btnPublicar" Canvas.Left="88" Canvas.Top="323" HorizontalAlignment="Left" VerticalAlignment="Center" Width="121" Height="40" Click="btnPublicar_Click">
                 <Canvas Height="35" Width="119">
                     <Label Content="Guardar" Canvas.Left="49" Height="25" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Canvas.Top="5"/>
                     <Image Source="Imagenes/Save.png" Height="25" Width="49" Canvas.Top="5"/>
@@ -39,13 +39,13 @@
 
 
         </Canvas>
-        <Button x:Name="btnTerminarProceso"  HorizontalAlignment="Left" Margin="375,338,0,0" VerticalAlignment="Top" Height="46" Width="158" Click="btnTerminarProceso_Click">
+        <Button x:Name="btnTerminarProceso"  HorizontalAlignment="Left" Margin="502,484,0,0" VerticalAlignment="Top" Height="46" Width="158" Click="btnTerminarProceso_Click">
             <Canvas Height="35" Width="133">
                 <Image Source="Imagenes/Upload.png" Height="25" Width="49" Canvas.Top="4" Canvas.Left="-2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 <Label Content="Finalizar Proceso" Canvas.Left="29" Height="31" Width="104" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Canvas.Top="4"/>
             </Canvas>
         </Button>
-        <Button x:Name="btnCargarDatos" HorizontalAlignment="Left" Margin="20,338,0,0" VerticalAlignment="Top" Height="46" Width="152" Click="btnCargarDatos_Click">
+        <Button x:Name="btnCargarDatos" HorizontalAlignment="Left" Margin="22,484,0,0" VerticalAlignment="Top" Height="46" Width="152" Click="btnCargarDatos_Click">
             <Canvas Height="35" Width="133">
                 <Image Source="Imagenes/Upload.png" Height="25" Width="49" Canvas.Top="4" Canvas.Left="-1"/>
                 <Label Content="Cargar Datos" Canvas.Left="48" Height="31" Width="85" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Canvas.Top="4"/>

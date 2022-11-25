@@ -180,14 +180,15 @@ namespace FeriaMaipoGrande
             try
             {
                 cbRol.ItemsSource = lista;
+                cbRol.DisplayMemberPath = "descripcion";
+                cbRol.SelectedValuePath = "id_rol";
             }
             catch (Exception e)
             {
                 MessageBox.Show("No se ha podido establecer una conexión con el servidor.", "Error de conexión al servidor.", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            cbRol.DisplayMemberPath = "descripcion";
-            cbRol.SelectedValuePath = "id_rol";
+            
         }
 
         private void ModificarUsuario()
