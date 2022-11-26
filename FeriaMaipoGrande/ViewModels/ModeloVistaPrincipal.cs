@@ -43,7 +43,7 @@ namespace FeriaMaipoGrande.ViewModels
             MostrarVistaUsuarios = new VistaModeloComandos(PerformExecuteMostrarVistaUsuariosComandos);
             MostrarVistaSubastas = new VistaModeloComandos(PerformExecuteMostrarVistaSubastasComandos);
 
-            PerformExecuteMostrarVistaPersonasComandos(null);
+            PerformExecuteMostrarVistaUsuariosComandos(null);
         }
 
         //private void ExecuteMostrarVistaContratosComandos(object obj)

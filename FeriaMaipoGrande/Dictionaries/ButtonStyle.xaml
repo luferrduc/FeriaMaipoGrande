@@ -170,7 +170,7 @@
     <Style x:Key="interfazButtonEliminar" TargetType="Button">
         <!-- Estilo de boton en reposo -->
         <Setter Property="Width" Value="35"/>
-        <Setter Property="Background" Value="#BF4D0B"/>
+        <Setter Property="Background" Value="#FF834D"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Template">
             <Setter.Value>

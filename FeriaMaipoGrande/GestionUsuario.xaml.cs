@@ -156,6 +156,8 @@ namespace FeriaMaipoGrande
                 dgListaUsuarios.ItemsSource = listaUsuarios;
                 dgListaPersonas.ItemsSource = listaPersonas;
                 cbRol.ItemsSource = lista;
+                cbRol.DisplayMemberPath = "descripcion";
+                cbRol.SelectedValuePath = "id_rol";
             }
             catch (Exception e)
             {

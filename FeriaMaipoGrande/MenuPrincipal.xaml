@@ -216,7 +216,7 @@
 
                             <Ellipse Height="35"
                                      Width="35"
-                                     Stroke="{StaticResource color2}"
+                                     Stroke="{StaticResource panelActiveColor}"
                                      StrokeThickness="2"
                                      Margin="10,0,10,0">
                                 <Ellipse.Fill>
