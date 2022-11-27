@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -10,13 +11,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows;
+using Hanssens.Net;
+using System.Runtime.Remoting.Messaging;
 
 namespace FeriaMaipoGrande.Datos
 {
     public class DBApi
     {
+        private dynamic user;
+        public dynamic storage = new LocalStorage();
         string url = "https://api-feria-web-production.up.railway.app/api/";
         string url2 = "http://localhost:3001/api/";
+
+        
+
         /* METODOS PARA EL MANTENEDOR DE PERSONAS */
         public dynamic GetPersonas(string path)
         {
@@ -420,27 +428,27 @@ namespace FeriaMaipoGrande.Datos
          * 
          */
 
-        public async Task<Uri> IniciarSesionAsync(LoginDAO login)
+
+        public async Task<string> IniciarSesionAsync(LoginDAO login)
         {
+
             HttpClient client = new HttpClient();
-            var response = await client.PostAsJsonAsync(string.Concat(url, "auth/login"), login);
-            MessageBox.Show(response.Headers.ToString());
+            var response = await client.PostAsJsonAsync(String.Concat(url, "auth/login"), login);
+
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 response.EnsureSuccessStatusCode();
-                return response.Headers.Location;
+                dynamic respuesta = await response.Content.ReadAsStringAsync();
+                LogUserDAO loginUser = new LogUserDAO();
+                loginUser.User = respuesta;
+                return respuesta;
             }
             else
             {
-                return response.Headers.Location;
+                return response.Headers.ToString();
             }
-
-            
-
-            
-            // return URI of the created resource.
-            
         }
 
     }
+
 }

@@ -1,9 +1,11 @@
 ﻿using Newtonsoft.Json;
 using System;
+using FeriaMaipoGrande;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace FeriaMaipoGrande.Datos
 {
@@ -25,9 +27,11 @@ namespace FeriaMaipoGrande.Datos
         [JsonProperty("password")]
         public string Contrasena { get => contrasena; set => contrasena = value; }
 
-        public async void iniciarSesionDAO(LoginDAO login)
+        public async Task<string> IniciarSesionDAO(LoginDAO login)
         {
-            await dbapi.IniciarSesionAsync(login);
+            return await dbapi.IniciarSesionAsync(login);
         }
+
+
     }
 }

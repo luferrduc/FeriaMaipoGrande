@@ -149,21 +149,21 @@
 
                         <Button x:Name="btnCerrar"
                                 Style="{StaticResource controlButton}"
-                                Tag="{StaticResource color4}"
+                                Tag="{StaticResource panelColor}"
                                 Click="btnClose_Click">
                             <fa:IconImage Icon="Xmark" Style="{StaticResource controlButtonIcon}"/>
                         </Button>
 
                         <Button x:Name="btnMaximize"
                                 Style="{StaticResource controlButton}"
-                                Tag="{StaticResource color6}"
+                                Tag="{StaticResource panelColor}"
                                 Click="btnMaximize_click">
                             <fa:IconImage Icon="WindowMaximize" Style="{StaticResource controlButtonIcon}"/>
                         </Button>
 
                         <Button x:Name="btnMinimize"
                                 Style="{StaticResource controlButton}"
-                                Tag="{StaticResource color6}"
+                                Tag="{StaticResource panelColor}"
                                 Click="btnMinimize_Click">
                             <fa:IconImage Icon="WindowMinimize" Width="12" Style="{StaticResource controlButtonIcon}"/>
                         </Button>

@@ -52,7 +52,7 @@
                 <DataGridTextColumn/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Listado de usuarios registradas" HorizontalAlignment="Left" Margin="14,251,0,0" VerticalAlignment="Top" Width="638" FontWeight="Bold" FontSize="16"/>
+        <Label Content="Listado de usuarios registrados" HorizontalAlignment="Left" Margin="14,251,0,0" VerticalAlignment="Top" Width="638" FontWeight="Bold" FontSize="16"/>
 
     </Grid>
 </UserControl>

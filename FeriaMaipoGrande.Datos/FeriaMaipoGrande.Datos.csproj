@@ -34,6 +34,9 @@
     <Reference Include="FontAwesome.Sharp, Version=6.1.1.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.Sharp.6.1.1\lib\net472\FontAwesome.Sharp.dll</HintPath>
     </Reference>
+    <Reference Include="LocalStorage, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LocalStorage.2.1.0\lib\netstandard2.0\LocalStorage.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNetCore.JsonPatch, Version=6.0.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNetCore.JsonPatch.6.0.8\lib\net461\Microsoft.AspNetCore.JsonPatch.dll</HintPath>
     </Reference>
@@ -92,6 +95,7 @@
   <ItemGroup>
     <Compile Include="ContratoDAO.cs" />
     <Compile Include="LoginDAO.cs" />
+    <Compile Include="LogUserDAO.cs" />
     <Compile Include="ProductoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubastaDAO.cs" />

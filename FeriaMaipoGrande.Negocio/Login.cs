@@ -24,14 +24,14 @@ namespace FeriaMaipoGrande.Negocio
 
         public string Contrasena { get => contrasena; set => contrasena = value; }
 
-        public void IniciarSesion()
+        public async Task<string> IniciarSesion()
         {
             LoginDAO loginDAO = new LoginDAO();
 
             loginDAO.Usuario = Usuario;
             loginDAO.Contrasena = Contrasena;
 
-            loginDAO.iniciarSesionDAO(loginDAO);
+            return await loginDAO.IniciarSesionDAO(loginDAO);
         }
 
     }
