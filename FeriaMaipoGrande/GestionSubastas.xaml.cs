@@ -35,7 +35,7 @@ namespace FeriaMaipoGrande
             dynamic listaSubasta = subasta.listarSubastas();
             try
             {
-                dgListaVentas.ItemsSource = listaSubasta;
+                dgListaSubasta.ItemsSource = listaSubasta;
             }
             catch (Exception ex)
             {
@@ -46,7 +46,7 @@ namespace FeriaMaipoGrande
 
         private void btnPublicar_Click(object sender, RoutedEventArgs e)
         {
-            if (dgListaVentas.SelectedIndex == -1 || dgListaVentas.SelectedItem.ToString().Equals("{NewItemPlaceholder}"))
+            if (dgListaSubasta.SelectedIndex == -1 || dgListaSubasta.SelectedItem.ToString().Equals("{NewItemPlaceholder}"))
             {
                 //validacion para que ni un campo esté vacío
                 if (!String.IsNullOrEmpty(txtID.Text) && !String.IsNullOrEmpty(txtCargo.Text) && !String.IsNullOrEmpty(dtTermino.Text)
@@ -127,47 +127,7 @@ namespace FeriaMaipoGrande
             listarSubastas();
         }
 
-        private void btnTerminarProceso_Click(object sender, RoutedEventArgs e)
-        {
-            if (dgListaVentas.SelectedIndex == -1 || dgListaVentas.SelectedItem.ToString().Equals("{NewItemPlaceholder}"))
-            {
-                MessageBox.Show("No hay datos seleccionados, por favor seleccione.", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            else
-            {
-                MessageBoxResult resultado = MessageBox.Show("¿Está seguro que desea finalizar esta subasta?", "Alerta", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                if (resultado == MessageBoxResult.Yes)
-                {
-                    Subasta subasta = new Subasta();
-                    string estado, fecha_termino, fecha_inicio, id_venta, cargo, total, ganador, observacion, fec_ter, fec_ini, mantenedorFechaLista, id_subasta;
-                    dynamic listaSubasta = JObject.Parse(dgListaVentas.SelectedItem.ToString());
-                    id_subasta = listaSubasta["id_subasta"];
-                    id_venta = listaSubasta["id_venta"];
-                    cargo = listaSubasta["cargo"];
-                    estado = "Finalizada";
-                    observacion = listaSubasta["observaciones"];
-                    ganador = listaSubasta["ganador"];
-                    mantenedorFechaLista = listaSubasta["fecha_inicio"];
-                    fec_ini = subasta.getFechas(mantenedorFechaLista.ToString());
-                    fecha_inicio = setFechas(fec_ini);
-                    fec_ter = subasta.getFechas(DateTime.Now.ToString());
-                    fecha_termino = setFechasDateTime(fec_ter);
-                    total = listaSubasta["total"];
-
-                    subasta.Id_venta = int.Parse(id_venta);
-                    subasta.Carga = int.Parse(cargo);
-                    subasta.Fecha_ini = (fecha_inicio);
-                    subasta.Fecha_ter = (fecha_termino);
-                    subasta.Total = int.Parse(total);
-                    subasta.Estado = estado;
-                    subasta.Ganador = ganador;
-                    subasta.Observaciones = observacion;
-                    subasta.actualizarSubasta(id_subasta);
-                    MessageBox.Show("Subasta finalizada correctamente.", "Registro modificado", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-            }
-            listarSubastas();
-        }
+        
 
         public string setFechas(string fecha)
         {
@@ -198,7 +158,7 @@ namespace FeriaMaipoGrande
 
         private void ModificarSubasta()
         {
-            if (dgListaVentas.SelectedIndex == -1 || dgListaVentas.SelectedItem.ToString().Equals("{NewItemPlaceholder}"))
+            if (dgListaSubasta.SelectedIndex == -1 || dgListaSubasta.SelectedItem.ToString().Equals("{NewItemPlaceholder}"))
             {
                 MessageBox.Show("Seleccione una subasta.", "Información", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
@@ -210,7 +170,7 @@ namespace FeriaMaipoGrande
                 {
                     try
                     {
-                        dynamic subastaLista = JObject.Parse(dgListaVentas.SelectedItem.ToString());
+                        dynamic subastaLista = JObject.Parse(dgListaSubasta.SelectedItem.ToString());
                         string id_subasta = subastaLista["id_subasta"];
 
                         string estado, fecha_termino, fecha_inicio, id_venta, cargo, total, observacion, ganador;
@@ -294,13 +254,13 @@ namespace FeriaMaipoGrande
 
         private void btnCargarDatos_Click(object sender, RoutedEventArgs e)
         {
-            if (dgListaVentas.SelectedIndex == -1 || dgListaVentas.SelectedItem.ToString().Equals("{NewItemPlaceholder}"))
+            if (dgListaSubasta.SelectedIndex == -1 || dgListaSubasta.SelectedItem.ToString().Equals("{NewItemPlaceholder}"))
             {
                 MessageBox.Show("No hay datos seleccionados, por favor seleccione.", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                dynamic subasta = JObject.Parse(dgListaVentas.SelectedItem.ToString());
+                dynamic subasta = JObject.Parse(dgListaSubasta.SelectedItem.ToString());
                 txtCargo.Text = subasta["cargo"];
                 txtEstado.Text = subasta["estado"];
                 txtGanador.Text = subasta["ganador"];
@@ -321,6 +281,76 @@ namespace FeriaMaipoGrande
                 dtTermino.Text = sub.getFechas(resultado2);
                 txtObservacion.Text = subasta["observaciones"];
             }
+        }
+
+        private void dgListaSubasta_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(dgListaSubasta.SelectedIndex == -1)
+            {
+
+            }
+            else
+            {
+                try
+                {
+                    dynamic detalleSubasta = JObject.Parse(dgListaSubasta.SelectedItem.ToString());
+                    int idSubasta = detalleSubasta["id_subasta"];
+                    Subasta sub = new Subasta();
+                    dynamic detetallesDeSubasta = sub.listarDetalleSubastas(idSubasta);
+                    dgDetalleSubasta.ItemsSource = detetallesDeSubasta;
+                    
+                }
+                catch (Exception ex)
+                {
+                    ex.ToString();
+                }
+            }
+            
+        }
+
+        private void btnTerminarProceso_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgListaSubasta.SelectedIndex == -1 || dgListaSubasta.SelectedItem.ToString().Equals("{NewItemPlaceholder}"))
+            {
+                MessageBox.Show("No hay datos seleccionados, por favor seleccione.", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBoxResult resultado = MessageBox.Show("¿Está seguro que desea finalizar esta subasta?", "Alerta", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (resultado == MessageBoxResult.Yes)
+                {
+                    Subasta subasta = new Subasta();
+                    string estado, fecha_termino, fecha_inicio, id_venta, cargo, total, ganador, observacion, fec_ter, fec_ini, mantenedorFechaLista, id_subasta;
+                    dynamic listaSubasta = JObject.Parse(dgListaSubasta.SelectedItem.ToString());
+                    dynamic listaDetalles = JObject.Parse(dgDetalleSubasta.SelectedItem.ToString());
+                    id_subasta = listaSubasta["id_subasta"];
+                    id_venta = listaSubasta["id_venta"];
+                    cargo = listaDetalles["cargo"];
+                    estado = "Finalizada";
+                    observacion = listaSubasta["observaciones"];
+                    ganador = listaDetalles["nombre"];
+                    mantenedorFechaLista = listaSubasta["fecha_inicio"];
+                    fec_ini = subasta.getFechas(mantenedorFechaLista.ToString());
+                    fecha_inicio = setFechas(fec_ini);
+                    fec_ter = subasta.getFechas(DateTime.Now.ToString());
+                    fecha_termino = setFechasDateTime(fec_ter);
+                    total = listaDetalles["precio"];
+
+                    subasta.Id_venta = int.Parse(id_venta);
+                    subasta.Carga = int.Parse(cargo);
+                    subasta.Fecha_ini = (fecha_inicio);
+                    subasta.Fecha_ter = (fecha_termino);
+                    subasta.Total = int.Parse(total);
+                    subasta.Estado = estado;
+                    subasta.Ganador = ganador;
+                    subasta.Observaciones = observacion;
+                    subasta.actualizarSubasta(id_subasta);
+                    MessageBox.Show("Subasta finalizada correctamente.", "Registro modificado", MessageBoxButton.OK, MessageBoxImage.Information);
+                    listarSubastas();
+                }
+                listarSubastas();
+            }
+            listarSubastas();
         }
     }
 }

@@ -18,8 +18,6 @@ namespace FeriaMaipoGrande.Datos
 {
     public class DBApi
     {
-        private dynamic user;
-        public dynamic storage = new LocalStorage();
         string url = "https://api-feria-web-production.up.railway.app/api/";
         string url2 = "http://localhost:3001/api/";
 
@@ -303,6 +301,30 @@ namespace FeriaMaipoGrande.Datos
          * 
          * 
          */
+
+        public dynamic GetDetalleSubasta(int id)
+        {
+            HttpWebRequest myWebRequest = (HttpWebRequest)WebRequest.Create(string.Concat(url, "detalle-subasta/subasta/", id));
+            myWebRequest.UserAgent = " Mozilla / 5.0 ( Windows NT 6.1 ; WOW64 ; rv : 23.0 ) Gecko / 20100101 Firefox / 23.0 ";
+            //myWebRequest.CookieContainer = myCookie ;
+            myWebRequest.Credentials = CredentialCache.DefaultCredentials;
+            myWebRequest.Proxy = null;
+            try
+            {
+                HttpWebResponse myHttpWebResponse = (HttpWebResponse)myWebRequest.GetResponse();
+                Stream myStream = myHttpWebResponse.GetResponseStream();
+                StreamReader myStreamReader = new StreamReader(myStream);
+                // Leemos los datos
+                string Datos = HttpUtility.HtmlDecode(myStreamReader.ReadToEnd());
+                dynamic data = JsonConvert.DeserializeObject(Datos);
+                return data;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+
+        }
 
         public async Task<Uri> CrearSubastaAsync(string path, SubastaDAO subasta)
         {
