@@ -48,6 +48,14 @@ namespace FeriaMaipoGrande.Negocio
             return listaSubasta;
         }
 
+        public dynamic listarDetalleSubastas(int id)
+        {
+            SubastaDAO subastaDAO = new SubastaDAO();
+            dynamic listaSubasta = subastaDAO.listarDetalleSubasta(id);
+
+            return listaSubasta;
+        }
+
         public void crearSubasta()
         {
             SubastaDAO subastaDAO = new SubastaDAO();

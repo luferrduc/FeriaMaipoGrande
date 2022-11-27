@@ -54,6 +54,13 @@ namespace FeriaMaipoGrande.Datos
             return datos;
         }
 
+        public dynamic listarDetalleSubasta(int id)
+        {
+            dynamic datos = dbapi.GetDetalleSubasta(id);
+
+            return datos;
+        }
+
         public async void crearSubastasDAO(SubastaDAO subasta)
         {
             await dbapi.CrearSubastaAsync("subastas", subasta);

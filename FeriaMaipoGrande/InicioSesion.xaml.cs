@@ -63,7 +63,7 @@ namespace FeriaMaipoGrande
                     }
                     else
                     {
-                        MessageBox.Show("Usuario no autorizado", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("Usuario no autorizado", "No tiene los permisos necesarios", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
                 catch (Exception ex)

@@ -11,7 +11,7 @@
             <ColumnDefinition Width="179*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <DataGrid  x:Name="dgListaVentas" HorizontalAlignment="Left" Margin="14,51,0,0" Width="638" Height="414" VerticalAlignment="Top">
+        <DataGrid  x:Name="dgListaSubasta" HorizontalAlignment="Left" Margin="14,51,0,0" Width="638" Height="200" VerticalAlignment="Top" SelectionChanged="dgListaSubasta_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn/>
             </DataGrid.Columns>
@@ -56,6 +56,12 @@
             </Canvas>
         </Button>
         <Label Content="Listado de subastas registradas" HorizontalAlignment="Left" Margin="14,20,0,0" VerticalAlignment="Top" Width="638" FontWeight="Bold" FontSize="16"/>
+        <DataGrid  x:Name="dgDetalleSubasta" HorizontalAlignment="Left" Margin="14,282,0,0" Width="638" Height="183" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Listado de detalle de subastas" HorizontalAlignment="Left" Margin="15,251,0,0" VerticalAlignment="Top" Width="638" FontWeight="Bold" FontSize="16"/>
 
     </Grid>
 </UserControl>
