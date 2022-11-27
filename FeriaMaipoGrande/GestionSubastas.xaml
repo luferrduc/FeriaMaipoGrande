@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="FeriaMaipoGrande.GestionSubastas"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FeriaMaipoGrande" xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="900">
+    <Grid Margin="-1,0,1,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="179*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DataGrid  x:Name="dgListaVentas" HorizontalAlignment="Left" Margin="14,51,0,0" Width="638" Height="414" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Canvas Margin="0,51,5,10" Width="255" HorizontalAlignment="Right">
+            <TextBox x:Name="txtID" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" Canvas.Left="88" Canvas.Top="28"/>
+            <TextBox x:Name="txtGanador" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" Canvas.Left="88" Canvas.Top="56"/>
+            <TextBox x:Name="dtInicio" Canvas.Left="88" Canvas.Top="82" HorizontalAlignment="Center" VerticalAlignment="Top" Width="121" Height="24"/>
+            <TextBox x:Name="dtTermino" Canvas.Left="88" Canvas.Top="109" Width="121" HorizontalAlignment="Center" VerticalAlignment="Top" Height="24"/>
+            <TextBox x:Name="txtCargo" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" Canvas.Left="88" Canvas.Top="138"/>
+            <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" Canvas.Left="88" Canvas.Top="166" RenderTransformOrigin="1.096,0.709"/>
+            <TextBox x:Name="txtEstado" Height="23" TextWrapping="Wrap" Width="121" Canvas.Left="88" Canvas.Top="194" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtObservacion" Height="95" TextWrapping="Wrap" Width="121" Canvas.Left="88" Canvas.Top="223" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Button x:Name="btnPublicar" Canvas.Left="88" Canvas.Top="323"  Style="{StaticResource interfazButton}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="121" Height="40" Click="btnPublicar_Click">
+                <Canvas Height="35" Width="119" >
+                    <Label Content="Guardar" Canvas.Left="49" Height="25" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Canvas.Top="5" Foreground="White"/>
+                    <fa:IconImage Icon="FloppyDisk" Style="{StaticResource menuButtonIcon}" Canvas.Left="-23" Canvas.Top="6"/>
+                </Canvas>
+            </Button>
+            <Label Content="Estado:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="35" Canvas.Top="193"/>
+            <Label Content="Cargo:" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Left="32" Canvas.Top="138" Width="51" RenderTransformOrigin="0.408,0.464"/>
+            <Label Content="Total:" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="38" Canvas.Top="164" RenderTransformOrigin="0.57,0.502"/>
+            <Label x:Name="lblApellidoM" Content="Fecha Termino: " HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="110" Width="88" Canvas.Left="-7"/>
+            <Label x:Name="lblApellidoP" Content="Fecha Inicio:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="81"/>
+            <Label x:Name="lblNumId" Content="N° ID de venta:" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="0.188,0.727" Canvas.Left="-5" Canvas.Top="28"/>
+            <Label x:Name="lblNombre" Content="Ganador:" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="0.188,0.727" Canvas.Left="23" Canvas.Top="55"/>
+            <Label Content="Observaciones:" Canvas.Left="-7" Canvas.Top="224" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+
+
+        </Canvas>
+        <Button x:Name="btnTerminarProceso"  HorizontalAlignment="Left" Style="{StaticResource interfazButtonEliminar}" Margin="493,480,0,0" VerticalAlignment="Top" Height="50" Width="160" Click="btnTerminarProceso_Click">
+            <Canvas Height="35" Width="133">
+                <fa:IconImage Icon="Trash" Style="{StaticResource menuButtonIcon}" Canvas.Left="-35" Canvas.Top="6"/>
+                <Label Content="Finalizar Proceso" Canvas.Left="29" Height="31" Width="104" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Canvas.Top="4" Foreground="White"/>
+            </Canvas>
+        </Button>
+        <Button x:Name="btnCargarDatos" HorizontalAlignment="Left" Style="{StaticResource interfazButton}" Margin="14,480,0,0" VerticalAlignment="Top" Height="50" Width="160" Click="btnCargarDatos_Click">
+            <Canvas Height="35" Width="133">
+                <fa:IconImage Icon="ArrowUpFromBracket" Style="{StaticResource menuButtonIcon}" Canvas.Left="-23" Canvas.Top="6"/>
+                <Label Content="Cargar Datos" Canvas.Left="48" Height="31" Width="85" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Canvas.Top="4" Foreground="White"/>
+            </Canvas>
+        </Button>
+        <Label Content="Listado de subastas registradas" HorizontalAlignment="Left" Margin="14,20,0,0" VerticalAlignment="Top" Width="638" FontWeight="Bold" FontSize="16"/>
+
+    </Grid>
+</UserControl>

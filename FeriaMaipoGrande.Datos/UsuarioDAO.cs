@@ -49,7 +49,14 @@ namespace FeriaMaipoGrande.Datos
 
         public dynamic listarUsuariosDAO()
         {
-            dynamic datos = dbapi.GetUsuarios("usuarios");
+            dynamic datos = dbapi.GetUsuarios();
+
+            return datos;
+        }
+
+        public dynamic listarSoloUsuarioDAO(string path)
+        {
+            dynamic datos = dbapi.GetUsuarios();
 
             return datos;
         }

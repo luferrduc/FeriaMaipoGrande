@@ -25,23 +25,43 @@ namespace FeriaMaipoGrande
         public MainWindow()
         {
             InitializeComponent();
-            //Datos.ApiRest.DBApi kd = new Datos.ApiRest.DBApi();
-            //dynamic datos = kd.Get();
-            //MessageBox.Show(Convert.ToString(datos));
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
         }
 
         private void btnPersonas_Click(object sender, RoutedEventArgs e)
         {
             GestionPersonas gestionP = new GestionPersonas();
             gestionP.Show();
-            Close();
+            this.Close();
         }
 
         private void btnUsuarios_Click(object sender, RoutedEventArgs e)
         {
             GestionUsuarios gestionU = new GestionUsuarios();
             gestionU.Show();
-            Close();
+            this.Close();
+        }
+
+        private void btnVentas_Click(object sender, RoutedEventArgs e)
+        {
+            MenuPrincipal gestionV = new MenuPrincipal();
+            gestionV.Show();
+            this.Close();
+        }
+
+        private void btnSubastas_Click(object sender, RoutedEventArgs e)
+        {
+            GestionSubasta subasta = new GestionSubasta();
+            subasta.Show();
+            this.Close();
+        }
+
+        private void btnContratos_Click(object sender, RoutedEventArgs e)
+        {
+            GestionContratos contratos = new GestionContratos();   
+            contratos.Show();
+            this.Close();
         }
     }
 }

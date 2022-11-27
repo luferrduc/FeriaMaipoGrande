@@ -11,7 +11,6 @@ namespace FeriaMaipoGrande.Negocio
 {
     public class Persona
     {
-        private int idPersona;
         private string nombre, apellidoPaterno, apellidoMaterno, direccion, ciudad, pais, numIdentificador;
 
         //Constructor vacío
@@ -20,7 +19,7 @@ namespace FeriaMaipoGrande.Negocio
         }
 
         //Constructor con datos
-        public Persona(int idPersona ,string nombre, string apellidoPaterno, string apellidoMaterno, string direccion, string ciudad, string pais, string numIdentificador)
+        public Persona(string nombre, string apellidoPaterno, string apellidoMaterno, string direccion, string ciudad, string pais, string numIdentificador)
         {
             Nombre = nombre;
             ApellidoPaterno = apellidoPaterno;
@@ -32,8 +31,6 @@ namespace FeriaMaipoGrande.Negocio
         }
 
         //Getters y setters
-        //[JsonProperty("id_persona")]
-        //public int IdPersona { get => idPersona; set => idPersona = value; }
         [JsonProperty("nombre")]
         public string Nombre { get => nombre; set => nombre = value; }
         [JsonProperty("apellido_p")]
@@ -63,7 +60,7 @@ namespace FeriaMaipoGrande.Negocio
             personaDAO.eliminarPersonaDAO(numIdentificador);
         }
 
-        public void crearPersona()
+        public bool crearPersona()
         {
             PersonaDAO personaDAO = new PersonaDAO();
 
@@ -75,6 +72,7 @@ namespace FeriaMaipoGrande.Negocio
             personaDAO.Ciudad = Ciudad;
             personaDAO.Direccion = Direccion;
             personaDAO.crearPersonaDAO("persona", personaDAO);
+            return true;
         }
 
         public void actualizarPersona(string numIdentificador)

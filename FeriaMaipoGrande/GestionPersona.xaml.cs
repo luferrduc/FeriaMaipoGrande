@@ -1,6 +1,6 @@
 ﻿using FeriaMaipoGrande.Negocio;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,27 +13,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace FeriaMaipoGrande
 {
     /// <summary>
-    /// Lógica de interacción para GestionPersonas.xaml
+    /// Lógica de interacción para GestionPersona.xaml
     /// </summary>
-    public partial class GestionPersonas : Window
+    public partial class GestionPersona : UserControl
     {
-        public GestionPersonas()
+        public GestionPersona()
         {
             InitializeComponent();
+            InitializeComponent();
             listarPersonas();
-            
-        }
-
-        private void btnRegresar_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow main = new MainWindow();
-            main.Show();
-            Close();
         }
 
 
@@ -41,50 +35,58 @@ namespace FeriaMaipoGrande
         {
             Persona persona = new Persona();
             dynamic listaPersonas = persona.listarPersonas();
-
-            /*dgListaPersonas.Columns[0].Header = "ID";
-            dgListaPersonas.Columns[0].Header = "Nombre";
-            dgListaPersonas.Columns[2].Header = "Apellido P";
-            dgListaPersonas.Columns[3].Header = "Apellido M";
-            dgListaPersonas.Columns[4].Header = "Dirección";
-            dgListaPersonas.Columns[5].Header = "País";
-            dgListaPersonas.Columns[6].Header = "Ciudad";
-            dgListaPersonas.Columns[7].Header = "Num ID";*/
-            dgListaPersonas.ItemsSource = listaPersonas;
-
+            try
+            {
+                dgListaPersonas.ItemsSource = listaPersonas;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("No se ha podido establecer una conexión con el servidor.", "Error de conexión al servidor.", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
-        
+
 
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
-            if (dgListaPersonas.SelectedIndex == -1){
-                string id, nombre, apellidoP, apellidoM, direccion, ciudad, pais;
-                id = txtID.Text;
-                nombre = txtNombre.Text;
-                apellidoP = txtApellidoP.Text;
-                apellidoM = txtApellidoM.Text;
-                direccion = txtDireccion.Text;
-                ciudad = txtCiudad.Text;
-                pais = txtPais.Text;
-                Persona persona = new Persona();
-                persona.NumIdentificador = id;
-                persona.Nombre = nombre;
-                persona.ApellidoPaterno = apellidoP;
-                persona.ApellidoMaterno = apellidoM;
-                persona.Ciudad = ciudad;
-                persona.Pais = pais;
-                persona.Direccion = direccion;
-                JsonConvert.SerializeObject(persona);
-                persona.crearPersona();
-                MessageBox.Show("Persona agregada correctamente.");
-                LimpiarCampos();
-                listarPersonas();
+            // OJO. Hay que modificar las acciones del botón guardar.
+
+            if (dgListaPersonas.SelectedIndex == -1)
+            {
+                if (!String.IsNullOrEmpty(txtApellidoM.Text) && !String.IsNullOrEmpty(txtDireccion.Text) &&
+                    !String.IsNullOrEmpty(txtApellidoP.Text) && !String.IsNullOrEmpty(txtID.Text) &&
+                    !String.IsNullOrEmpty(txtCiudad.Text) && !String.IsNullOrEmpty(txtNombre.Text) && !String.IsNullOrEmpty(txtPais.Text))
+                {
+                    string id, nombre, apellidoP, apellidoM, direccion, ciudad, pais;
+                    id = txtID.Text;
+                    nombre = txtNombre.Text;
+                    apellidoP = txtApellidoP.Text;
+                    apellidoM = txtApellidoM.Text;
+                    direccion = txtDireccion.Text;
+                    ciudad = txtCiudad.Text;
+                    pais = txtPais.Text;
+                    Persona persona = new Persona();
+                    persona.NumIdentificador = id;
+                    persona.Nombre = nombre;
+                    persona.ApellidoPaterno = apellidoP;
+                    persona.ApellidoMaterno = apellidoM;
+                    persona.Ciudad = ciudad;
+                    persona.Pais = pais;
+                    persona.Direccion = direccion;
+                    JsonConvert.SerializeObject(persona);
+                    persona.crearPersona();
+                    MessageBox.Show("Se ha creado la persona correctamente", "Tarea completada", MessageBoxButton.OK, MessageBoxImage.Information);
+                    listarPersonas();
+                }
+                else
+                {
+                    MessageBox.Show("Debe completar los campos para añadir una persona", "Datos faltantes", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
-            else{
+            else
+            {
                 ModificarPersona();
             }
-            LimpiarCampos();
             listarPersonas();
         }
 
@@ -92,16 +94,19 @@ namespace FeriaMaipoGrande
         {
             if (dgListaPersonas.SelectedIndex == -1 || dgListaPersonas.SelectedItem.ToString().Equals("{NewItemPlaceholder}"))
             {
-                MessageBox.Show("No hay datos seleccionados, por favor seleccione.");
+                MessageBox.Show("No hay datos seleccionados, por favor seleccione.", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                dynamic persona = JObject.Parse(dgListaPersonas.SelectedItem.ToString());
-                string numID = persona["num_identificador"].ToString();
-                Persona pers = new Persona();
-                pers.eliminarPersona(numID);
-                MessageBox.Show("Persona eliminada correctamente.");
-                listarPersonas();
+                MessageBoxResult resultado = MessageBox.Show("Está seguro que desea eliminar a esta persona?", "Alerta", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (resultado == MessageBoxResult.Yes)
+                {
+                    dynamic persona = JObject.Parse(dgListaPersonas.SelectedItem.ToString());
+                    string numID = persona["num_identificador"].ToString();
+                    Persona pers = new Persona();
+                    pers.eliminarPersona(numID);
+                    MessageBox.Show("Persona eliminada correctamente.", "Registro modificado", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
             listarPersonas();
         }
@@ -110,16 +115,17 @@ namespace FeriaMaipoGrande
         {
             if (dgListaPersonas.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione una persona.");
+                MessageBox.Show("Seleccione una persona.", "Información", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
             else
             {
-                
+
                 if (!String.IsNullOrEmpty(txtApellidoM.Text) && !String.IsNullOrEmpty(txtDireccion.Text) &&
                     !String.IsNullOrEmpty(txtApellidoP.Text) && !String.IsNullOrEmpty(txtID.Text) &&
                     !String.IsNullOrEmpty(txtCiudad.Text) && !String.IsNullOrEmpty(txtNombre.Text) && !String.IsNullOrEmpty(txtPais.Text))
-                { 
-                    try{
+                {
+                    try
+                    {
                         dynamic per = JObject.Parse(dgListaPersonas.SelectedItem.ToString());
                         string numID = per["num_identificador"].ToString();
 
@@ -141,8 +147,10 @@ namespace FeriaMaipoGrande
                         persona.Direccion = direccion;
                         JsonConvert.SerializeObject(persona);
                         persona.actualizarPersona(numID);
-                        MessageBox.Show("Cliente actualizado exitosamente", "Información", MessageBoxButton.OK);
-                    }catch (Exception ex){
+                        MessageBox.Show("Cliente actualizado exitosamente", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    catch (Exception ex)
+                    {
                         MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK);
                     }
                 }
@@ -158,11 +166,11 @@ namespace FeriaMaipoGrande
         {
             if (dgListaPersonas.SelectedIndex == -1 || dgListaPersonas.SelectedItem.ToString().Equals("{NewItemPlaceholder}"))
             {
-                MessageBox.Show("No hay datos seleccionados, por favor seleccione.");
+                MessageBox.Show("No hay datos seleccionados, por favor seleccione.", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-
+                txtID.IsEnabled = false;
                 dynamic perso = JObject.Parse(dgListaPersonas.SelectedItem.ToString());
                 txtApellidoM.Text = perso["apellido_m"].ToString();
                 txtApellidoP.Text = perso["apellido_p"].ToString();
@@ -172,7 +180,7 @@ namespace FeriaMaipoGrande
                 txtNombre.Text = perso["nombre"].ToString();
                 txtPais.Text = perso["pais"].ToString();
             }
-            
+
         }
 
         private void LimpiarCampos()
@@ -184,7 +192,7 @@ namespace FeriaMaipoGrande
             txtID.Text = string.Empty;
             txtNombre.Text = string.Empty;
             txtPais.Text = string.Empty;
+            txtID.IsEnabled = true;
         }
     }
-    }
-
+}

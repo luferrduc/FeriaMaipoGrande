@@ -20,7 +20,7 @@ namespace FeriaMaipoGrande.Negocio
             this.IdAdmnistrador = idAdmnistrador;
         }
 
-        public Administrador(int idPersona, string nombre, string apellidoPaterno, string apellidoMaterno, string direccion, string ciudad, string pais, string numIdentificador) : base(idPersona, nombre, apellidoPaterno, apellidoMaterno, direccion, ciudad, pais, numIdentificador)
+        public Administrador(string nombre, string apellidoPaterno, string apellidoMaterno, string direccion, string ciudad, string pais, string numIdentificador) : base(nombre, apellidoPaterno, apellidoMaterno, direccion, ciudad, pais, numIdentificador)
         {
         }
 

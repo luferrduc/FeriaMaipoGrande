@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit.3.13.3\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.13.3\build\NUnit.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -29,6 +30,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,11 +53,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="FontAwesome.Sharp, Version=6.1.1.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.6.1.1\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="LocalStorage, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LocalStorage.2.1.0\lib\netstandard2.0\LocalStorage.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.13.3.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.13.3\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp, Version=108.0.1.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.108.0.1\lib\netstandard2.0\RestSharp.dll</HintPath>
@@ -86,6 +99,8 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -104,41 +119,112 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="AgregarProducto.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GestionPersonas.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GestionUsuarios.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="AgregarProducto.xaml.cs">
-      <DependentUpon>AgregarProducto.xaml</DependentUpon>
+    <Compile Include="GestionContrato.xaml.cs">
+      <DependentUpon>GestionContrato.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VistasWPF\GestionContratos.xaml.cs">
+      <DependentUpon>GestionContratos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GestionPersona.xaml.cs">
+      <DependentUpon>GestionPersona.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VistasWPF\GestionSubasta.xaml.cs">
+      <DependentUpon>GestionSubasta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GestionSubastas.xaml.cs">
+      <DependentUpon>GestionSubastas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GestionUsuario.xaml.cs">
+      <DependentUpon>GestionUsuario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VistasWPF\GestionVenta.xaml.cs">
+      <DependentUpon>GestionVenta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ModeloVistaContratos.cs" />
+    <Compile Include="ViewModels\ModeloVistaPrincipal.cs" />
+    <Compile Include="ViewModels\ModeloVistaSubasta.cs" />
+    <Compile Include="ViewModels\VistaGestionPersonas.cs" />
+    <Compile Include="ViewModels\VistaGestionUsuarios.cs" />
+    <Compile Include="ViewModels\VistaModeloComandos.cs" />
+    <Page Include="Dictionaries\ButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dictionaries\EstiloBoton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GestionContrato.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VistasWPF\GestionContratos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GestionPersona.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VistasWPF\GestionPersonas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VistasWPF\GestionSubasta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GestionSubastas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GestionUsuario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VistasWPF\GestionUsuarios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VistasWPF\GestionVenta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InicioSesion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VistasWPF\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GestionPersonas.xaml.cs">
+    <Compile Include="VistasWPF\GestionPersonas.xaml.cs">
       <DependentUpon>GestionPersonas.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GestionUsuarios.xaml.cs">
+    <Compile Include="VistasWPF\GestionUsuarios.xaml.cs">
       <DependentUpon>GestionUsuarios.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="InicioSesion.xaml.cs">
+      <DependentUpon>InicioSesion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VistasWPF\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MenuPrincipal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MenuPrincipal.xaml.cs">
+      <DependentUpon>MenuPrincipal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ModeloVistaBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -161,6 +247,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Page Include="Dictionaries\UIColors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -187,5 +277,37 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\logo-social.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Add-Client.png" />
+    <Resource Include="Imagenes\Atras.png" />
+    <Resource Include="Imagenes\Client.png" />
+    <Resource Include="Imagenes\Client2.png" />
+    <Resource Include="Imagenes\Data-Edit.png" />
+    <Resource Include="Imagenes\delete.png" />
+    <Resource Include="Imagenes\Document-01.png" />
+    <Resource Include="Imagenes\Document-Add-02.png" />
+    <Resource Include="Imagenes\Documents-02.png" />
+    <Resource Include="Imagenes\Garbage.png" />
+    <Resource Include="Imagenes\list.png" />
+    <Resource Include="Imagenes\Save.png" />
+    <Resource Include="Imagenes\Search-Find.png" />
+    <Resource Include="Imagenes\Text-Edit.png" />
+    <Resource Include="Imagenes\Upload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\logo2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NUnit.3.13.3\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.13.3\build\NUnit.props'))" />
+  </Target>
 </Project>

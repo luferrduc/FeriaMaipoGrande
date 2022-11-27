@@ -42,6 +42,13 @@ namespace FeriaMaipoGrande.Negocio
             return listaUsuarios;
         }
 
+        public dynamic listarUsuario(string path)
+        {
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            dynamic listaUsuarios = usuarioDAO.listarSoloUsuarioDAO(path);
+            return listaUsuarios;
+        }
+
         public void eliminarUsuario(string username)
         {
             UsuarioDAO usuarioDAO = new UsuarioDAO();
@@ -79,36 +86,6 @@ namespace FeriaMaipoGrande.Negocio
             UsuarioDAO user = new UsuarioDAO();
             dynamic roles = user.rolesUsuariosDAO();
             return roles;
-        }
-
-        public int datoSeleccionado(string descripcion)
-        {
-            int dato;
-            if (descripcion == "administrador")
-            {
-                dato = 1;
-                return dato;
-            } else if (descripcion == "productor")
-            {
-                dato = 2;
-                return dato;
-            }
-            else if (descripcion == "cliente externo")
-            {
-                dato = 3;
-                return dato;
-            }
-            else if (descripcion == "cliente interno")
-            {
-                dato = 4;
-                return dato;
-            }
-            else if (descripcion == "transportista")
-            {
-                dato = 5;
-                return dato;
-            }
-            return dato = 0;
         }
     }
 }
